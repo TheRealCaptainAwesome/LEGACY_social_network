@@ -1,4 +1,4 @@
-# Social Network application
+# Social Network Application
 
 This is a social network application created just for fun, to get some practice using the MERN stack on something that could actually be shown to people.
 
