@@ -1,0 +1,19 @@
+{
+  "name": "social_network",
+  "version": "1.0.0",
+  "description": "Social network application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stjarnan/social_network.git"
+  },
+  "author": "Jonas STiernstrom",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Stjarnan/social_network/issues"
+  },
+  "homepage": "https://github.com/Stjarnan/social_network#readme"
+}
