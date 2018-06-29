@@ -12,6 +12,4 @@ app.use('/api/posts', posts);
 app.use('/api/profile', profile);
 // -------------------------------------
 
-app.get('/', (req, res) => res.send('Server works!'));
-
 app.listen(port, () => console.log(`Server live on port: ${ port }`));
