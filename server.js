@@ -1,6 +1,14 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 8080;
+const bodyParser = require('body-parser');
+
+// General Middleware
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}))
+
+// -------------------------------------
 
 // Setup routes
 const auth = require('./routes/api/auth');
@@ -12,6 +20,6 @@ app.use('/api/auth', auth);
 app.use('/api/posts', posts);
 app.use('/api/profile', profile);
 app.use('*', defaultRoutes);
-// -------------------------------------
+// ------------------------------------
 
 app.listen(port, () => console.log(`Server live on port: ${ port }`));
