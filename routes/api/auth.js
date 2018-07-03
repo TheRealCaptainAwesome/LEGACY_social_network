@@ -37,6 +37,31 @@ router.post('/register', (req, res) => {
             }
         }
     );
-} );
+} ); // END of /register
+
+router.post('/login', (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    db.connectMongoose();
+    User.findOne({ email })
+        .then(
+            user => {
+                if(!user) {
+                    return res.json({ email:'User not found.' });
+                } else {
+                    bcrypt.compare(password, user.password)
+                        .then(passwordMatch => {
+                            if(!passwordMatch) {
+                                db.disconnectMongoose();
+                                return res.json({password: 'Password did not match.'});
+                            } else {
+                                db.disconnectMongoose();
+                                res.json({message: 'Success!'});
+                            }
+                        });
+                }
+            });
+}); // END of /login
 
 module.exports = router;
