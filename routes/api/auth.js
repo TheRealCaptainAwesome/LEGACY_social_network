@@ -3,6 +3,8 @@ const router = express.Router();
 const User = require('../../models/User');
 const bcrypt = require('bcryptjs');
 const db = require('../../db/base');
+const config = require('../../config/keys');
+const jwt = require('jsonwebtoken');
 
 router.post('/register', (req, res) => {
     db.connectMongoose()
@@ -57,7 +59,25 @@ router.post('/login', (req, res) => {
                                 return res.json({password: 'Password did not match.'});
                             } else {
                                 db.disconnectMongoose();
-                                res.json({message: 'Success!'});
+
+                                const tokenData = {
+                                    id: user.id,
+                                    name: user.name
+                                };
+
+                                jwt.sign(
+                                    tokenData,
+                                    config.key,
+                                    { expiresIn: 86400 },
+                                    (err, token) => {
+                                        if(err) {
+                                            res.json({ error: err });
+                                        } else {
+                                            res.json({ success: true, token: 'Bearer ' + token });
+                                        }
+                                    }
+                                );
+
                             }
                         });
                 }
