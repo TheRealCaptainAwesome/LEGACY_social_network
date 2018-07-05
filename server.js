@@ -2,11 +2,15 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 8080;
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
 // General Middleware
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
+
+app.use(passport.initialize());
+require('./config/passport')(passport);
 
 // -------------------------------------
 

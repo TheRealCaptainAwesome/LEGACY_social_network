@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const db = require('../../db/base');
 const config = require('../../config/keys');
 const jwt = require('jsonwebtoken');
+const passport = require('passport');
 
 router.post('/register', (req, res) => {
     db.connectMongoose()
@@ -60,13 +61,13 @@ router.post('/login', (req, res) => {
                             } else {
                                 db.disconnectMongoose();
 
-                                const tokenData = {
+                                const jwt_payload = {
                                     id: user.id,
                                     name: user.name
                                 };
 
                                 jwt.sign(
-                                    tokenData,
+                                    jwt_payload,
                                     config.key,
                                     { expiresIn: 86400 },
                                     (err, token) => {
@@ -83,5 +84,9 @@ router.post('/login', (req, res) => {
                 }
             });
 }); // END of /login
+
+router.get('/secure', passport.authenticate('jwt', { session: false } ), (req, res) => {
+    res.json({ message: 'success!' });
+});
 
 module.exports = router;
