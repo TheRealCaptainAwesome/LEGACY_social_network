@@ -6,8 +6,17 @@ const db = require('../../db/base');
 const config = require('../../config/keys');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
+const validateRegister = require('../../validation_rules/register');
 
 router.post('/register', (req, res) => {
+
+    const {validationError, isValid } = validateRegister(req.body);
+
+    // Validation
+    if(!isValid) {
+        return res.json({ validationError });
+    }
+
     db.connectMongoose()
     User.findOne({ email: req.body.email })
     .then(
