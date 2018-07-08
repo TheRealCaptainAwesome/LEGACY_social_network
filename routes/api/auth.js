@@ -7,10 +7,11 @@ const config = require('../../config/keys');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const validateRegister = require('../../validation_rules/register');
+const validateLogin = require('../../validation_rules/login');
 
 router.post('/register', (req, res) => {
 
-    const {validationError, isValid } = validateRegister(req.body);
+    const {validationError, isValid } = validateLogin(req.body);
 
     // Validation
     if(!isValid) {
@@ -23,7 +24,8 @@ router.post('/register', (req, res) => {
         user => {
             if(user) {
                 db.disconnectMongoose();
-                return res.json({ message: 'This email already exist.' })
+                validationError.email = 'This Email already exists.'
+                return res.json({ validationError })
             } else {
                 const createUser = new User({
                     name: req.body.name,
@@ -52,6 +54,14 @@ router.post('/register', (req, res) => {
 } ); // END of /register
 
 router.post('/login', (req, res) => {
+
+    const {validationError, isValid } = validateLogin(req.body);
+
+    // Validation
+    if(!isValid) {
+        return res.json({ validationError });
+    }
+
     const email = req.body.email;
     const password = req.body.password;
 
@@ -60,13 +70,15 @@ router.post('/login', (req, res) => {
         .then(
             user => {
                 if(!user) {
-                    return res.json({ email:'User not found.' });
+                    validationError.email = 'User not found.';
+                    return res.json({ validationError });
                 } else {
                     bcrypt.compare(password, user.password)
                         .then(passwordMatch => {
                             if(!passwordMatch) {
+                                validationError.password = 'Password did not match.';
                                 db.disconnectMongoose();
-                                return res.json({password: 'Password did not match.'});
+                                return res.json({ validationError });
                             } else {
                                 db.disconnectMongoose();
 
