@@ -10,7 +10,7 @@ const validateRegister = require("../../validation_rules/register");
 const validateLogin = require("../../validation_rules/login");
 
 router.post("/register", (req, res) => {
-  const { validationError, isValid } = validateLogin(req.body);
+  const { validationError, isValid } = validateRegister(req.body);
 
   // Validation
   if (!isValid) {
