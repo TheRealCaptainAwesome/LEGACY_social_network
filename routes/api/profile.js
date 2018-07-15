@@ -30,6 +30,7 @@ router.get(
   (req, res) => {
     const profileData = {};
     profileData.social_media = {};
+    const err = {};
 
     profileData.user = req.user.id;
     if (req.body.handle) profileData.handle = req.body.handle;
@@ -37,11 +38,41 @@ router.get(
     if (req.body.location) profileData.location = req.body.location;
     if (req.body.skills) profileData.skills = req.body.skills.split(",");
     if (req.body.bio) profileData.bio = req.body.bio;
-    if (req.body.twitter) profileData.social_media.twitter = req.body.twitter;
-    if (req.body.facebook)
+    if (req.body.twitter) {
+      profileData.social_media.twitter = req.body.twitter;
+    }
+    if (req.body.facebook) {
       profileData.social_media.facebook = req.body.facebook;
-    if (req.body.instagram)
+    }
+    if (req.body.instagram) {
       profileData.social_media.instagram = req.body.instagram;
+    }
+
+    db.connectMongoose();
+    User.findOne({ user: req.user.id }).then(profile => {
+      if (profile) {
+        Profile.findOneAndUpdate(
+          { user: req.body.id },
+          { $set: profileData },
+          { new: true }
+        ).then(profile => {
+          db.disconnectMongoose();
+          res.json(profile);
+        });
+      } else {
+        Profile.findOne({ handle: profileData.handle }).then(profile => {
+          if (profile) {
+            err.handle = "This handle already exists.";
+            res.json({ err });
+          } else {
+            new Profile(profileData).save().then(profile => {
+              db.disconnectMongoose();
+              res.json(profile);
+            });
+          }
+        });
+      }
+    });
   }
 );
 
