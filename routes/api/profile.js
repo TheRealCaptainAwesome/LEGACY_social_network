@@ -56,10 +56,10 @@ router.post(
     }
 
     db.connectMongoose();
-    User.findOne({ user: req.user.id }).then(profile => {
+    User.findOne({ _id: req.user.id }).then(profile => {
       if (profile) {
         Profile.findOneAndUpdate(
-          { user: req.body.id },
+          { user: req.user.id },
           { $set: profileData },
           { new: true }
         ).then(profile => {
@@ -69,6 +69,7 @@ router.post(
       } else {
         Profile.findOne({ handle: profileData.handle }).then(profile => {
           if (profile) {
+            db.disconnectMongoose();
             err.handle = "This handle already exists.";
             res.json({ err });
           } else {
