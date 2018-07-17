@@ -25,16 +25,17 @@ router.get(
   }
 );
 
-router.get(
-  "/createprofile",
+router.post(
+  "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const { err, isValid } = validateProfile(req.body);
+    const { validationError, isValid } = validateProfile(req.body);
 
-    if (!isvalid) {
-      return res.json(err);
+    if (!isValid) {
+      return res.json(validationError);
     }
 
+    const err = {};
     const profileData = {};
     profileData.social_media = {};
 
