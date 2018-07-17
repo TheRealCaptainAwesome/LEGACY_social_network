@@ -4,6 +4,7 @@ const db = require("../../db/base");
 const passport = require("passport");
 const User = require("../../models/User");
 const Profile = require("../../models/Profile");
+const validateProfile = require("../../validation_rules/profile");
 
 router.get(
   "/",
@@ -28,9 +29,14 @@ router.get(
   "/createprofile",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    const { err, isValid } = validateProfile(req.body);
+
+    if (!isvalid) {
+      return res.json(err);
+    }
+
     const profileData = {};
     profileData.social_media = {};
-    const err = {};
 
     profileData.user = req.user.id;
     if (req.body.handle) profileData.handle = req.body.handle;
