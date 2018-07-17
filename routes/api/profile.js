@@ -13,15 +13,17 @@ router.get(
     const err = {};
     db.connectMongoose();
 
-    Profile.findOne({ user: req.user.id }).then(profile => {
-      if (!profile) {
-        err.noprofile = "This user has no profile. Yet.";
+    Profile.findOne({ user: req.user.id })
+      .populate("user", ["name"])
+      .then(profile => {
+        if (!profile) {
+          err.noprofile = "This user has no profile. Yet.";
+          db.disconnectMongoose();
+          res.json(err);
+        }
         db.disconnectMongoose();
-        res.json(err);
-      }
-      db.disconnectMongoose();
-      res.json(profile);
-    });
+        res.json(profile);
+      });
   }
 );
 
