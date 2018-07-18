@@ -86,4 +86,40 @@ router.post(
   }
 );
 
+router.get("/handle/:handle", (req, res) => {
+  const err = {};
+  db.connectMongoose();
+
+  Profile.findOne({ handle: req.params.handle })
+    .populate("user", ["name"])
+    .then(profile => {
+      if (!profile) {
+        err.profile = "There is no profile called: " + req.params.handle;
+        db.disconnectMongoose();
+        res.json(err);
+      } else {
+        db.disconnectMongoose();
+        res.json(profile);
+      }
+    });
+});
+
+router.get("/user/:id", (req, res) => {
+  const err = {};
+  db.connectMongoose();
+
+  Profile.findOne({ _id: req.params.id })
+    .populate("user", ["name"])
+    .then(profile => {
+      if (!profile) {
+        err.profile = "There is no profile with the id of: " + req.params.id;
+        db.disconnectMongoose();
+        res.json(err);
+      } else {
+        db.disconnectMongoose();
+        res.json(profile);
+      }
+    });
+});
+
 module.exports = router;
