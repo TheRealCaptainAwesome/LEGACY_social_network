@@ -104,11 +104,11 @@ router.get("/handle/:handle", (req, res) => {
     });
 });
 
-router.get("/user/:id", (req, res) => {
+router.get("/user/:userid", (req, res) => {
   const err = {};
   db.connectMongoose();
 
-  Profile.findOne({ _id: req.params.id })
+  Profile.findOne({ _id: req.params.userid })
     .populate("user", ["name"])
     .then(profile => {
       if (!profile) {
@@ -118,6 +118,29 @@ router.get("/user/:id", (req, res) => {
       } else {
         db.disconnectMongoose();
         res.json(profile);
+      }
+    })
+    .catch(err =>
+      res.json({
+        profile: "There is no profile with the id of: " + req.params.userid
+      })
+    );
+});
+
+router.get("/all", (req, res) => {
+  const err = {};
+  db.connectMongoose();
+
+  Profile.find()
+    .populate("user", ["name"])
+    .then(profiles => {
+      if (!profiles) {
+        err.profiles = "There are no profiles.";
+        db.disconnectMongoose();
+        res.json(err);
+      } else {
+        db.disconnectMongoose();
+        res.json(profiles);
       }
     });
 });
