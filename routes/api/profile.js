@@ -5,6 +5,7 @@ const passport = require("passport");
 const User = require("../../models/User");
 const Profile = require("../../models/Profile");
 const validateProfile = require("../../validation_rules/profile");
+const validateExperience = require("../../validation_rules/experience");
 
 router.get(
   "/",
@@ -109,7 +110,7 @@ router.get("/user/:userid", (req, res) => {
   const err = {};
   db.connectMongoose();
 
-  Profile.findOne({ _id: req.params.userid })
+  Profile.findOne({ user: req.params.userid })
     .populate("user", ["name"])
     .then(profile => {
       if (!profile) {
@@ -150,9 +151,15 @@ router.post(
   "/experience",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    const { validationError, isValid } = validateExperience(req.body);
+    if (!isValid) {
+      res.json(validationError);
+    }
+    const err = {};
+
     db.connectMongoose();
 
-    Profile.findOne({ _id: req.user.id }).then(profile => {
+    Profile.findOne({ user: req.user.id }).then(profile => {
       if (profile) {
         const experience = {
           title: req.body.title,
@@ -162,8 +169,15 @@ router.post(
           current: req.body.current
         };
 
-        Profile.experience.unshift(experience);
-        Profile.save().then(profile => res.json(profile));
+        profile.experience.unshift(experience);
+        profile.save().then(profile => {
+          db.disconnectMongoose();
+          res.json(profile);
+        });
+      } else {
+        db.disconnectMongoose();
+        err.profile = "Something went wrong.";
+        res.json(err);
       }
     });
   }
