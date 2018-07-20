@@ -47,6 +47,7 @@ router.post(
     if (req.body.location) profileData.location = req.body.location;
     if (req.body.skills) profileData.skills = req.body.skills.split(",");
     if (req.body.bio) profileData.bio = req.body.bio;
+    if (req.body.location) profileData.location = req.body.location;
     if (req.body.twitter) {
       profileData.social_media.twitter = req.body.twitter;
     }
