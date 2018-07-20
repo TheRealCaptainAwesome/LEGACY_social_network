@@ -146,4 +146,27 @@ router.get("/all", (req, res) => {
     });
 });
 
+router.post(
+  "/experience",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    db.connectMongoose();
+
+    Profile.findOne({ _id: req.user.id }).then(profile => {
+      if (profile) {
+        const experience = {
+          title: req.body.title,
+          company: req.body.company,
+          from: req.body.from,
+          to: req.body.to,
+          current: req.body.current
+        };
+
+        Profile.experience.unshift(experience);
+        Profile.save().then(profile => res.json(profile));
+      }
+    });
+  }
+);
+
 module.exports = router;
