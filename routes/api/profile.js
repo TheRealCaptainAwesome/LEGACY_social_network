@@ -204,4 +204,18 @@ router.post(
   }
 );
 
+router.post(
+  "/deleteuser/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    db.connectMongoose();
+    Profile.findOneAndRemove({ user: req.user.id }).then(() => {
+      User.findOneAndRemove({ _id: req.user.id }).then(() => {
+        db.disconnectMongoose();
+        res.json({ message: "User has successfully been removed." });
+      });
+    });
+  }
+);
+
 module.exports = router;
