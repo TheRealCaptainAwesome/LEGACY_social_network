@@ -183,4 +183,25 @@ router.post(
   }
 );
 
+router.post(
+  "/deleteexperience/:expid",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    db.connectMongoose();
+
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      const remove = profile.experience
+        .map(experience => experience.id)
+        .indexOf(req.params.expid);
+
+      profile.experience.splice(remove, 1);
+
+      profile.save().then(profile => {
+        db.disconnectMongoose();
+        res.json(profile);
+      });
+    });
+  }
+);
+
 module.exports = router;
