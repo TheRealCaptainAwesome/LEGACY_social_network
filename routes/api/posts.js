@@ -9,7 +9,6 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const err = {};
     const createPost = new Post({
       user: req.user.id,
       text: req.body.text,
@@ -23,6 +22,32 @@ router.post(
 
     db.connectMongoose();
     createPost.save().then(post => {
+      db.disconnectMongoose();
+      res.json(post);
+    });
+  }
+);
+
+router.get(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    db.connectMongoose();
+    Post.find()
+      .sort({ date: "desc" })
+      .then(posts => {
+        db.disconnectMongoose();
+        res.json(posts);
+      });
+  }
+);
+
+router.get(
+  "/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    db.connectMongoose();
+    Post.findById(req.params.id).then(post => {
       db.disconnectMongoose();
       res.json(post);
     });
