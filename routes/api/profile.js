@@ -183,7 +183,7 @@ router.post(
   }
 );
 
-router.post(
+router.delete(
   "/deleteexperience/:expid",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
@@ -204,7 +204,7 @@ router.post(
   }
 );
 
-router.post(
+router.delete(
   "/deleteuser/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
