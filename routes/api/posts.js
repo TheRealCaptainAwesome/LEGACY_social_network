@@ -38,7 +38,8 @@ router.get(
       .then(posts => {
         db.disconnectMongoose();
         res.json(posts);
-      });
+      })
+      .catch(err => res.json({ err: "No posts found." }));
   }
 );
 
@@ -47,10 +48,12 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     db.connectMongoose();
-    Post.findById(req.params.id).then(post => {
-      db.disconnectMongoose();
-      res.json(post);
-    });
+    Post.findById(req.params.id)
+      .then(post => {
+        db.disconnectMongoose();
+        res.json(post);
+      })
+      .catch(err => res.json({ err: "No post found with that id." }));
   }
 );
 
