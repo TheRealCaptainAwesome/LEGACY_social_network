@@ -158,7 +158,7 @@ router.post(
   }
 );
 
-router.post(
+router.delete(
   "/comment/:postid/:commentid",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
