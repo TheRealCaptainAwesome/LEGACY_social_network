@@ -100,16 +100,24 @@ router.post(
             post.likes.filter(like => like.user.toString() === req.user.id)
               .length > 0
           ) {
-            db.disconnectMongoose();
-            return res.json({ liked: "This post has already been liked." });
+            const removeLike = post.likes
+              .map(like => like.user.toString())
+              .indexOf(req.user.id);
+
+            post.likes.splice(removeLike, 1);
+
+            post.save().then(unliked => {
+              db.disconnectMongoose();
+              return res.json({ liked: "You successfully unliked this post." });
+            });
+          } else {
+            post.likes.push({ user: req.user.id });
+
+            post.save().then(liked => {
+              db.disconnectMongoose();
+              return res.json({ liked: "You successfully liked this post!" });
+            });
           }
-
-          post.likes.push({ user: req.user.id });
-
-          post.save().then(liked => {
-            db.disconnectMongoose();
-            res.json(liked);
-          });
         })
         .catch(err => res.json({ err: "Post not found." }));
     });
