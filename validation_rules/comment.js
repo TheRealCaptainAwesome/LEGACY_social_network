@@ -1,15 +1,15 @@
 const validator = require("validator");
 const isEmpty = require("./isEmpty");
 
-const validatePost = validate => {
+const validateComment = validate => {
   let validationError = {};
 
   // Making sure that we'll be working with strings for the validator package
   validate.text = !isEmpty(validate.text) ? validate.text : "";
 
-  if (!validator.isLength(validate.text, { min: 20, max: 400 })) {
+  if (!validator.isLength(validate.text, { min: 5, max: 100 })) {
     validationError.text =
-      "The post needs to be atleast 20 and max 400 characters long.";
+      "The comment needs to be atleast 5 and max 100 characters long.";
   }
 
   return {
@@ -18,4 +18,4 @@ const validatePost = validate => {
   };
 };
 
-module.exports = validatePost;
+module.exports = validateComment;

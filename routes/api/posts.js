@@ -5,6 +5,7 @@ const db = require("../../db/base");
 const Post = require("../../models/Post");
 const Profile = require("../../models/Profile");
 const validatePost = require("../../validation_rules/post");
+const validateComment = require("../../validation_rules/comment");
 
 router.post(
   "/",
@@ -120,6 +121,39 @@ router.post(
           }
         })
         .catch(err => res.json({ err: "Post not found." }));
+    });
+  }
+);
+
+router.post(
+  "/comment/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const { validationError, isValid } = validateComment(req.body);
+
+    if (!isValid) {
+      return res.json(validationError);
+    }
+
+    db.connectMongoose();
+    Post.findById(req.params.id).then(post => {
+      const comment = {
+        text: req.body.text,
+        name: req.body.name,
+        user: req.user.id
+      };
+
+      post.comments.unshift(comment);
+      post
+        .save()
+        .then(post => {
+          db.disconnectMongoose();
+          res.json(post);
+        })
+        .catch(err => {
+          db.disconnectMongoose();
+          res.json({ err: "Post not found." });
+        });
     });
   }
 );
