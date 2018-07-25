@@ -88,4 +88,32 @@ router.delete(
   }
 );
 
+router.post(
+  "/like/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    db.connectMongoose();
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      Post.findById(req.params.id)
+        .then(post => {
+          if (
+            post.likes.filter(like => like.user.toString() === req.user.id)
+              .length > 0
+          ) {
+            db.disconnectMongoose();
+            return res.json({ liked: "This post has already been liked." });
+          }
+
+          post.likes.push({ user: req.user.id });
+
+          post.save().then(liked => {
+            db.disconnectMongoose();
+            res.json(liked);
+          });
+        })
+        .catch(err => res.json({ err: "Post not found." }));
+    });
+  }
+);
+
 module.exports = router;
