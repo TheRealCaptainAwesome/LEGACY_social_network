@@ -148,13 +148,50 @@ router.post(
         .save()
         .then(post => {
           db.disconnectMongoose();
-          res.json(post);
+          return res.json(post);
         })
         .catch(err => {
           db.disconnectMongoose();
-          res.json({ err: "Post not found." });
+          return res.json({ err: "Post not found." });
         });
     });
+  }
+);
+
+router.post(
+  "/comment/:postid/:commentid",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    db.connectMongoose();
+    Post.findById(req.params.postid)
+      .then(post => {
+        if (
+          post.comments.filter(
+            comment => comment._id.toString() === req.params.commentid
+          ).length > 0
+        ) {
+          const remove = post.comments
+            .map(comment => {
+              comment._id.toString();
+            })
+            .indexOf(req.params.commentid);
+
+          post.comments.splice(remove, 1);
+          post.save().then(post => {
+            db.disconnectMongoose();
+            return res.json(post);
+          });
+        } else {
+          db.disconnectMongoose();
+          return res.json({ err: "Comment could not be found." });
+        }
+      })
+      .catch(err => {
+        db.disconnectMongoose();
+        return res.json({
+          err: "Post not found."
+        });
+      });
   }
 );
 
