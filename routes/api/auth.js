@@ -9,10 +9,12 @@ const passport = require("passport");
 const validateRegister = require("../../validation_rules/register");
 const validateLogin = require("../../validation_rules/login");
 
+// Validate received data
+// Check if user email already exists
+// Create user and encrypt password
 router.post("/register", (req, res) => {
   const { validationError, isValid } = validateRegister(req.body);
 
-  // Validation
   if (!isValid) {
     return res.json({ validationError });
   }
@@ -47,6 +49,10 @@ router.post("/register", (req, res) => {
   });
 }); // END of /register
 
+// Validate received data
+// Find user using email
+// If user is found -> compare password
+// Using jwt -> create token for authentication
 router.post("/login", (req, res) => {
   const { validationError, isValid } = validateLogin(req.body);
 
@@ -94,13 +100,5 @@ router.post("/login", (req, res) => {
     }
   });
 }); // END of /login
-
-router.get(
-  "/secure",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    res.json({ id: req.user.id, name: req.user.name, email: req.user.email });
-  }
-);
 
 module.exports = router;
