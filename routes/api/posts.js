@@ -7,6 +7,11 @@ const Profile = require("../../models/Profile");
 const validatePost = require("../../validation_rules/post");
 const validateComment = require("../../validation_rules/comment");
 
+// Route to create a post
+// Authenticate user
+// Create post object using the data received from user
+// Validate post
+// Save post to dband return
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
@@ -30,6 +35,10 @@ router.post(
   }
 );
 
+// Route to get posts
+// User needs to be authenticated to see posts
+// Find posts and sort by descending order
+// Return posts
 router.get(
   "/",
   passport.authenticate("jwt", { session: false }),
@@ -45,6 +54,10 @@ router.get(
   }
 );
 
+// Route to get post by id
+// Authenticate user
+// Find Post by id
+// Return post
 router.get(
   "/:id",
   passport.authenticate("jwt", { session: false }),
@@ -59,6 +72,11 @@ router.get(
   }
 );
 
+// Route to delete post by id
+// Authenticate user
+// Make sure user has a profile
+// Find the post
+// Make sure the user is authorized to remove and then remove
 router.delete(
   "/:id",
   passport.authenticate("jwt", { session: false }),
@@ -89,6 +107,9 @@ router.delete(
   }
 );
 
+// Route to handle like-functionality
+// If user has already liked the post, remove the like, otherwise add a like
+// Store the user id in the like-array
 router.post(
   "/like/:id",
   passport.authenticate("jwt", { session: false }),
@@ -125,6 +146,10 @@ router.post(
   }
 );
 
+// Route to handle posting of comments
+// Validate comment
+// Find the post commented on
+// Add posted comment to the comments-array and save to db
 router.post(
   "/comment/:id",
   passport.authenticate("jwt", { session: false }),
@@ -158,6 +183,9 @@ router.post(
   }
 );
 
+// Route that handles the deletion of comments
+// Find post by id-param
+// Remove comment where commentid-param matches the commentid from db
 router.delete(
   "/comment/:postid/:commentid",
   passport.authenticate("jwt", { session: false }),
