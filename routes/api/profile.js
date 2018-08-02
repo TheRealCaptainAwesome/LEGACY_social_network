@@ -7,6 +7,7 @@ const Profile = require("../../models/Profile");
 const validateProfile = require("../../validation_rules/profile");
 const validateExperience = require("../../validation_rules/experience");
 
+// Get profile matching user id
 router.get(
   "/",
   passport.authenticate("jwt", { session: false }),
@@ -28,6 +29,10 @@ router.get(
   }
 );
 
+// Create a profile
+// Validate the posted data
+// Store posted data in profileData-object
+// Find user and update/create profile
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
@@ -88,6 +93,7 @@ router.post(
   }
 );
 
+// Find profile by handle
 router.get("/handle/:handle", (req, res) => {
   const err = {};
   db.connectMongoose();
@@ -106,6 +112,7 @@ router.get("/handle/:handle", (req, res) => {
     });
 });
 
+// Find a user by userid-param
 router.get("/user/:userid", (req, res) => {
   const err = {};
   db.connectMongoose();
@@ -129,6 +136,7 @@ router.get("/user/:userid", (req, res) => {
     );
 });
 
+// Get all routes
 router.get("/all", (req, res) => {
   const err = {};
   db.connectMongoose();
@@ -147,6 +155,10 @@ router.get("/all", (req, res) => {
     });
 });
 
+// Route to handle the creation of new experiences
+// Validate received data
+// Find profile matching the user
+// Add posted data to object and add object to db
 router.post(
   "/experience",
   passport.authenticate("jwt", { session: false }),
@@ -183,6 +195,9 @@ router.post(
   }
 );
 
+// Route to handle deletion of experiences
+// Find profile matching user
+// Remove experience where expid-param matches experience id
 router.delete(
   "/deleteexperience/:expid",
   passport.authenticate("jwt", { session: false }),
@@ -204,6 +219,9 @@ router.delete(
   }
 );
 
+// Route to delete users
+// Remove the profile matching the user
+// Remove the user matching user(req.user.id)
 router.delete(
   "/deleteuser/",
   passport.authenticate("jwt", { session: false }),
