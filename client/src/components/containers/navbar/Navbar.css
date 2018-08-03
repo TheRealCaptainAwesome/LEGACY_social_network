@@ -1,8 +1,7 @@
-.test {
-    background-color: black;
+header {
+    padding: 25px;
 }
 
-.test h1 {
-    margin-top: 0;
-    color: white;
+header h1 {
+    margin: 0;
 }
