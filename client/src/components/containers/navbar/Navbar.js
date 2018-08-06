@@ -9,8 +9,12 @@ export default class Navbar extends Component {
           <h1>Social Network</h1>
         </div>
         <ul>
-          <li>Sign Up</li>
-          <li>Sign In</li>
+          <li>
+            <a href="">Sign Up</a>
+          </li>
+          <li>
+            <a href="">Sign In</a>
+          </li>
         </ul>
       </header>
     );
