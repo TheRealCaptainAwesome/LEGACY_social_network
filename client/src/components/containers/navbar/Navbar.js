@@ -8,14 +8,16 @@ export default class Navbar extends Component {
         <div className="logoNtitle">
           <h1>Social Network</h1>
         </div>
-        <ul>
-          <li>
-            <a href="">Sign Up</a>
-          </li>
-          <li>
-            <a href="">Sign In</a>
-          </li>
-        </ul>
+        <nav>
+          <ul>
+            <li>
+              <a href="">Sign Up</a>
+            </li>
+            <li>
+              <a href="">Sign In</a>
+            </li>
+          </ul>
+        </nav>
       </header>
     );
   }
