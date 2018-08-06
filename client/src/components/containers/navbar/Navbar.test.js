@@ -4,13 +4,17 @@ import { shallow } from "enzyme";
 import Navbar from "./Navbar";
 
 describe("Navbar", () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(<Navbar />);
+  });
+
   it("Renders a header:", () => {
-    const wrapper = shallow(<Navbar />);
     expect(wrapper.find("header").exists()).toBe(true);
   });
 
   it("Renders a logo & title section", () => {
-    const wrapper = shallow(<Navbar />);
     expect(
       wrapper
         .find("header")
@@ -20,7 +24,6 @@ describe("Navbar", () => {
   });
 
   it("Renders a nav", () => {
-    const wrapper = shallow(<Navbar />);
     expect(
       wrapper
         .find("header")
