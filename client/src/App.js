@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
 // Import containers
@@ -9,11 +10,13 @@ import Main from "./components/containers/main/Main";
 class App extends Component {
   render() {
     return (
-      <div>
-        <Navbar />
-        <Main />
-        <Footer />
-      </div>
+      <Router>
+        <div>
+          <Navbar />
+          <Route exact path="/" component={Main} />
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }
