@@ -1,5 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
+import { Link } from "react-router-dom";
 
 import Navbar from "./Navbar";
 
@@ -29,6 +30,15 @@ describe("Navbar", () => {
         .find("header")
         .children("nav")
         .exists()
+    ).toBe(true);
+  });
+
+  it('Renders "Sign Up" & "Sign In" links', () => {
+    expect(
+      wrapper.containsAllMatchingElements([
+        <Link to="/register">Sign Up</Link>,
+        <Link to="/">Sign In</Link>
+      ])
     ).toBe(true);
   });
 });
