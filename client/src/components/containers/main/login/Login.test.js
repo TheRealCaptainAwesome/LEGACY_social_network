@@ -1,12 +1,12 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import Register from "./Register";
+import Login from "./Login";
 
 describe("Register component", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<Register />);
+    wrapper = shallow(<Login />);
   });
 
   it("Renders a form", () => {

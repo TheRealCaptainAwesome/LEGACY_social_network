@@ -12,4 +12,8 @@ describe("Main container component", () => {
   it("Render a 'main' html-element", () => {
     expect(wrapper.find("main").exists()).toBe(true);
   });
+
+  it("Renders a Register-component", () => {
+    expect(wrapper.find("Register").exists()).toBe(true);
+  });
 });
