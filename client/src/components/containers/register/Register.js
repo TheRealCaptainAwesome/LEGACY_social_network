@@ -13,10 +13,21 @@ export default class Register extends Component {
     this.setState(state);
   };
 
+  onSubmit = evt => {
+    evt.preventDefault();
+
+    const user = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password
+    };
+    console.log(user);
+  };
+
   render() {
     return (
       <main>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <input
             type="text"
             placeholder="Name"
@@ -29,12 +40,14 @@ export default class Register extends Component {
             placeholder="Email"
             name="email"
             value={this.state.email}
+            onChange={this.onInputChange}
           />
           <input
             type="password"
             placeholder="Password"
             name="password"
             value={this.state.password}
+            onChange={this.onInputChange}
           />
           <input type="submit" />
         </form>
