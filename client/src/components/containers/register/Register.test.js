@@ -13,8 +13,11 @@ describe("Register", () => {
     expect(wrapper.find("main").exists()).toBe(true);
   });
 
-  it("Renders a form element", () => {
+  it("Renders a form element containing name, email and password fields", () => {
     expect(wrapper.find("form").exists()).toBe(true);
+    expect(wrapper.find("input[name='name']").exists()).toBe(true);
+    expect(wrapper.find("input[name='email']").exists()).toBe(true);
+    expect(wrapper.find("input[name='password']").exists()).toBe(true);
   });
 
   it("Updates component state on user input", () => {
