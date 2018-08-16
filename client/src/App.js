@@ -8,19 +8,25 @@ import Footer from "./components/containers/footer/Footer";
 import Main from "./components/containers/main/Main";
 import Register from "./components/containers/register/Register";
 
+// Import Store and Provider
+import { Provider } from "react-redux";
+import Store from "./redux/Store";
+
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div>
-          <Navbar />
-          <div className="container">
-            <Route exact path="/" component={Main} />
-            <Route exact path="/register" component={Register} />
+      <Provider store={Store}>
+        <Router>
+          <div>
+            <Navbar />
+            <div className="container">
+              <Route exact path="/" component={Main} />
+              <Route exact path="/register" component={Register} />
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-      </Router>
+        </Router>
+      </Provider>
     );
   }
 }
