@@ -59,7 +59,11 @@ class Register extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { registerUser }
 )(Register);
