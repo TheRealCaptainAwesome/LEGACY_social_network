@@ -16,7 +16,7 @@ router.post("/register", (req, res) => {
   const { validationError, isValid } = validateRegister(req.body);
 
   if (!isValid) {
-    return res.json({ validationError });
+    return res.status(400).json({ validationError });
   }
 
   db.connectMongoose();
