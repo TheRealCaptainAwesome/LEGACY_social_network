@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { registerUser } from "../../../redux/actions/authActions";
 
-export default class Register extends Component {
+class Register extends Component {
   state = {
     name: "",
     email: "",
@@ -21,7 +23,8 @@ export default class Register extends Component {
       email: this.state.email,
       password: this.state.password
     };
-    console.log(user);
+
+    this.props.registerUser(user);
   };
 
   render() {
@@ -55,3 +58,8 @@ export default class Register extends Component {
     );
   }
 }
+
+export default connect(
+  null,
+  { registerUser }
+)(Register);
