@@ -1,4 +1,4 @@
-import { TRY_DISPATCH } from "../actions/types";
+import { REGISTER_DISPATCH } from "../actions/types";
 
 const initialState = {
   isAuthenticated: false,
@@ -7,7 +7,7 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case TRY_DISPATCH:
+    case REGISTER_DISPATCH:
       return {
         ...state,
         user: action.payload

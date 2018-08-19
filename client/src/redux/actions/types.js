@@ -1,1 +1,1 @@
-export const TRY_DISPATCH = "TRY_DISPATCH";
+export const REGISTER_DISPATCH = "REGISTER_DISPATCH";

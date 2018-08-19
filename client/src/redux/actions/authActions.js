@@ -1,8 +1,8 @@
-import { TRY_DISPATCH } from "./types";
+import { REGISTER_DISPATCH } from "./types";
 
 export const registerUser = data => {
   return {
-    type: TRY_DISPATCH,
+    type: REGISTER_DISPATCH,
     payload: data
   };
 };
