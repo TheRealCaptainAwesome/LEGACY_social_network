@@ -1,4 +1,4 @@
-import { GET_ERRORS } from "../actions/types";
+import {} from "../actions/types";
 
 const initialState = {
   isAuthenticated: false,
