@@ -1,21 +1,19 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // DBConfig
-const db = require('../config/keys').mongoURI;
+const db = require("../config/keys").mongoURI;
 
 module.exports = {
-    // Connect to DB
-    connectMongoose: () => {
-        mongoose
-            .connect(db)
-            .then(() => console.log('db connected.'))
-            .catch( err => console.log(`Failure: ${ err }`));
-    },
+  connectMongoose: () => {
+    mongoose
+      .connect(db)
+      .then(() => console.log("db connected."))
+      .catch(err => console.log(`Failure: ${err}`));
+  },
 
-    disconnectMongoose: () => {
-        mongoose
-            .connection
-            .close( () => console.log('db connection has been closed.') );
-    }
-
-}
+  disconnectMongoose: () => {
+    mongoose.connection.close(() =>
+      console.log("db connection has been closed.")
+    );
+  }
+};
