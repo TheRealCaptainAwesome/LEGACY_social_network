@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+
+// For use with Redux
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerUser } from "../../../redux/actions/authActions";
@@ -26,6 +28,10 @@ class Register extends Component {
       password: this.state.password
     };
 
+    // This function comes from the store -> authActions.js
+    // It receives:
+    // User data needed to create a user (from register form)
+    // Routehistory to be able to handle redirects
     this.props.registerUser(user, this.props.history);
   };
 
