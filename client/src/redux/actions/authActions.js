@@ -12,3 +12,7 @@ export const registerUser = (data, routerHistory) => dispatch => {
       })
     );
 };
+
+export const loginUser = data => dispatch => {
+  axios.post("api/auth/");
+};
