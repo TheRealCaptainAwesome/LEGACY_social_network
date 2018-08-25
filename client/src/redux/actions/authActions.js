@@ -14,5 +14,15 @@ export const registerUser = (data, routerHistory) => dispatch => {
 };
 
 export const loginUser = data => dispatch => {
-  axios.post("api/auth/");
+  axios
+    .post("api/auth/login", data)
+    .then(res => {
+      console.log(res.data);
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
 };

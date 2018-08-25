@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-export default class Register extends Component {
+// For Redux
+import { connect } from "react-redux";
+import { loginUser } from "../../../../redux/actions/authActions";
+
+class Login extends Component {
   state = {
     email: "",
     password: ""
@@ -14,7 +19,11 @@ export default class Register extends Component {
 
   onSubmit = evt => {
     evt.preventDefault();
-    console.log(evt);
+    const user = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    this.props.loginUser(user);
   };
 
   render() {
@@ -39,3 +48,19 @@ export default class Register extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Login);

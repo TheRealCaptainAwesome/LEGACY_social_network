@@ -13,7 +13,7 @@ describe("Main container component", () => {
     expect(wrapper.find("main").exists()).toBe(true);
   });
 
-  it("Renders a Register-component", () => {
-    expect(wrapper.find("Register").exists()).toBe(true);
+  it("Renders a Login-component", () => {
+    expect(wrapper.find("Login").exists()).toBe(true);
   });
 });
