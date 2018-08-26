@@ -74,7 +74,7 @@ router.post("/login", (req, res) => {
         if (!passwordMatch) {
           validationError.password = "Password did not match.";
           db.disconnectMongoose();
-          return res.json({ validationError });
+          return res.status(400).json({ validationError });
         } else {
           db.disconnectMongoose();
 

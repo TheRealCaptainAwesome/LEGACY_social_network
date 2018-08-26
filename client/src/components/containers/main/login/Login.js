@@ -27,9 +27,9 @@ class Login extends Component {
   };
 
   render() {
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
-    }
+    // if (this.props.auth.isAuthenticated) {
+    //   this.props.history.push("/dashboard");
+    // }
 
     return (
       <form onSubmit={this.onSubmit}>

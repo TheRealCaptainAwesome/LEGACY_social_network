@@ -15,14 +15,13 @@ export const registerUser = (data, routerHistory) => dispatch => {
     );
 };
 
-export const loginUser = data => dispatch => {
+export const loginUser = user => dispatch => {
   axios
-    .post("api/auth/login", data)
+    .post("api/auth/login", user)
     .then(res => {
-      const { token } = res.token;
+      const { token } = res.data;
 
       localStorage.setItem("authToken", token);
-
       setAuth(token);
 
       const setUser = jwt_decode(token);
