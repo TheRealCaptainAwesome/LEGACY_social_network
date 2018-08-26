@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 
 // For Redux
 import { connect } from "react-redux";
@@ -26,11 +27,13 @@ class Login extends Component {
     this.props.loginUser(user);
   };
 
-  render() {
-    // if (this.props.auth.isAuthenticated) {
-    //   this.props.history.push("/dashboard");
-    // }
+  componentDidUpdate() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
 
+  render() {
     return (
       <form onSubmit={this.onSubmit}>
         <input
@@ -67,4 +70,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { loginUser }
-)(Login);
+)(withRouter(Login));
