@@ -24,7 +24,7 @@ router.post("/register", (req, res) => {
     if (user) {
       db.disconnectMongoose();
       validationError.email = "This Email already exists.";
-      return res.json({ validationError });
+      return res.status(400).json({ validationError });
     } else {
       const createUser = new User({
         name: req.body.name,
@@ -58,7 +58,7 @@ router.post("/login", (req, res) => {
 
   // Validation
   if (!isValid) {
-    return res.json({ validationError });
+    return res.status(400).json({ validationError });
   }
 
   const email = req.body.email;
@@ -68,7 +68,7 @@ router.post("/login", (req, res) => {
   User.findOne({ email }).then(user => {
     if (!user) {
       validationError.email = "User not found.";
-      return res.json({ validationError });
+      return res.status(400).json({ validationError });
     } else {
       bcrypt.compare(password, user.password).then(passwordMatch => {
         if (!passwordMatch) {
