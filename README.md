@@ -4,5 +4,9 @@ This is a social network application created just for fun, to get some practice 
 
 ## Built With
 
-Yet to be written
+* [Node](https://nodejs.org/en/)
+* [MongoDB](https://www.mongodb.com/)
+* [Express](https://expressjs.com/)
+* [React](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
 
