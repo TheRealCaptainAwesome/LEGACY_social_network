@@ -2,6 +2,14 @@
 
 This is a social network application created just for fun, to get some practice using the MERN stack on something that could actually be shown to people.
 
+## Get Started
+
+ * Download the repo
+ * Run npm install
+ * To run the server: enter nodemon server.js from your terminal
+ * To run the client: cd into the client folder and enter npm start from your terminal
+
+
 ## Built With
 
 * [Node](https://nodejs.org/en/)
