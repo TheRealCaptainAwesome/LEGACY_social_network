@@ -25,6 +25,8 @@ if (localStorage.authToken) {
 
   if (setUser.exp < curTime) {
     Store.dispatch(logOut());
+
+    window.location.href = "/";
   }
 }
 
