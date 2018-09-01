@@ -41,3 +41,9 @@ export const setCurrentUser = setUser => {
     payload: setUser
   };
 };
+
+export const logOut = () => dispatch => {
+  localStorage.removeItem("authToken");
+  setAuth(false);
+  dispatch(setCurrentUser({}));
+};
