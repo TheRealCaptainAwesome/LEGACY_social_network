@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import jwt_decode from "jwt-decode";
-import { setCurrentUser } from "./redux/actions/authActions";
+import { setCurrentUser, logOut } from "./redux/actions/authActions";
 import setAuth from "./redux/utilities/setAuth";
 
 // Import containers
@@ -20,6 +20,12 @@ if (localStorage.authToken) {
 
   const setUser = jwt_decode(localStorage.authToken);
   Store.dispatch(setCurrentUser(setUser));
+
+  const curTime = Date.now() / 1000; // divided by 1000 to get milliseconds
+
+  if (setUser.exp < curTime) {
+    Store.dispatch(logOut());
+  }
 }
 
 class App extends Component {
