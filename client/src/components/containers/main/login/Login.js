@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 
+// Custom components
+import Field from "../../../formComponents/fields/Field";
+
 // For Redux
 import { connect } from "react-redux";
 import { loginUser } from "../../../../redux/actions/authActions";
@@ -42,14 +45,14 @@ class Login extends Component {
   render() {
     return (
       <form onSubmit={this.onSubmit}>
-        <input
-          type="text"
-          placeholder="Email"
+        <Field
           name="email"
+          type="email"
+          placeholder="Email"
           value={this.state.email}
           onChange={this.onInputChange}
         />
-        <input
+        <Field
           type="password"
           placeholder="Password"
           name="password"
