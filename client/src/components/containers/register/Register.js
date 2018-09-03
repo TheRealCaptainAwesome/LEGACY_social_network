@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+// Custom Components
+import Field from "../../formComponents/fields/Field";
+
 // For use with Redux
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -45,21 +48,21 @@ class Register extends Component {
     return (
       <main>
         <form onSubmit={this.onSubmit}>
-          <input
+          <Field
             type="text"
             placeholder="Name"
             name="name"
             value={this.state.name}
             onChange={this.onInputChange}
           />
-          <input
+          <Field
             type="text"
             placeholder="Email"
             name="email"
             value={this.state.email}
             onChange={this.onInputChange}
           />
-          <input
+          <Field
             type="password"
             placeholder="Password"
             name="password"
