@@ -10,10 +10,12 @@ import Navbar from "./components/containers/navbar/Navbar";
 import Footer from "./components/containers/footer/Footer";
 import Main from "./components/containers/main/Main";
 import Register from "./components/containers/register/Register";
+import Dashboard from "./components/containers/dashboard/Dashboard";
 
 // Import Store and Provider
 import { Provider } from "react-redux";
 import Store from "./redux/Store";
+import { clearProfile } from "./redux/actions/profileActions";
 
 if (localStorage.authToken) {
   setAuth(localStorage.authToken);
@@ -25,6 +27,7 @@ if (localStorage.authToken) {
 
   if (setUser.exp < curTime) {
     Store.dispatch(logOut());
+    Store.dispatch(clearProfile());
 
     window.location.href = "/";
   }
@@ -40,6 +43,7 @@ class App extends Component {
             <div className="container">
               <Route exact path="/" component={Main} />
               <Route exact path="/register" component={Register} />
+              <Route exact path="/dashboard" component={Dashboard} />
             </div>
             <Footer />
           </div>
