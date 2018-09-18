@@ -14,11 +14,13 @@ class Dashboard extends Component {
     const { profile, loading } = this.props.profile;
 
     let dashboardContent;
-
+    console.log(profile);
     if (profile === null || loading) {
       dashboardContent = <Loader />;
-    } else {
+    } else if (!profile.noprofile) {
       dashboardContent = <span>Profile showing here</span>;
+    } else {
+      dashboardContent = <span>{user.name} has no profile</span>;
     }
 
     return <div>{dashboardContent}</div>;
