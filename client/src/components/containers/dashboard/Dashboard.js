@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
+import Loader from "../../loader/Loader";
 // Redux
 import { connect } from "react-redux";
 import { getProfile } from "../../../redux/actions/profileActions";
@@ -16,7 +16,7 @@ class Dashboard extends Component {
     let dashboardContent;
 
     if (profile === null || loading) {
-      dashboardContent = <span>Loading..</span>;
+      dashboardContent = <Loader />;
     } else {
       dashboardContent = <span>Profile showing here</span>;
     }
