@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import jwt_decode from "jwt-decode";
 import { setCurrentUser, logOut } from "./redux/actions/authActions";
@@ -11,6 +11,9 @@ import Footer from "./components/containers/footer/Footer";
 import Main from "./components/containers/main/Main";
 import Register from "./components/containers/register/Register";
 import Dashboard from "./components/containers/dashboard/Dashboard";
+
+// Routes that needs auth
+import AuthCheck from "./components/authCheckComponent/authCheck";
 
 // Import Store and Provider
 import { Provider } from "react-redux";
@@ -43,7 +46,9 @@ class App extends Component {
             <div className="container">
               <Route exact path="/" component={Main} />
               <Route exact path="/register" component={Register} />
-              <Route exact path="/dashboard" component={Dashboard} />
+              <Switch>
+                <AuthCheck exact path="/dashboard" component={Dashboard} />
+              </Switch>
             </div>
             <Footer />
           </div>

@@ -16,10 +16,10 @@ class Dashboard extends Component {
     let dashboardContent;
     if (profile === null || loading) {
       dashboardContent = <Loader />;
-    } else if (!profile.noprofile) {
-      dashboardContent = <span>Profile showing here</span>;
-    } else {
+    } else if (profile.noprofile) {
       dashboardContent = <span>{user.name} has no profile</span>;
+    } else {
+      dashboardContent = <span>Profile showing ehre.</span>;
     }
 
     return <div>{dashboardContent}</div>;
