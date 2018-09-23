@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+import Field from "../../formComponents/fields/Field";
+import TextArea from "../../formComponents/fields/TextArea";
+import Select from "../../formComponents/dropdown/Select";
+import SocialField from "../../formComponents/socialmedia/SocialField";
+
 class CreateProfile extends Component {
   state = {
     handle: "",
