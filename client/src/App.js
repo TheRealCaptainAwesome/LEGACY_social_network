@@ -11,6 +11,7 @@ import Footer from "./components/containers/footer/Footer";
 import Main from "./components/containers/main/Main";
 import Register from "./components/containers/register/Register";
 import Dashboard from "./components/containers/dashboard/Dashboard";
+import CreateProfile from "./components/containers/createProfile/CreateProfile";
 
 // Routes that needs auth
 import AuthCheck from "./components/authCheckComponent/authCheck";
@@ -48,6 +49,13 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <Switch>
                 <AuthCheck exact path="/dashboard" component={Dashboard} />
+              </Switch>
+              <Switch>
+                <AuthCheck
+                  exact
+                  path="/createprofile"
+                  component={CreateProfile}
+                />
               </Switch>
             </div>
             <Footer />

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Loader from "../../loader/Loader";
+import { Link } from "react-router-dom";
+
 // Redux
 import { connect } from "react-redux";
 import { getProfile } from "../../../redux/actions/profileActions";
@@ -22,7 +24,12 @@ class Dashboard extends Component {
       dashboardContent = <span>Profile showing ehre.</span>;
     }
 
-    return <div>{dashboardContent}</div>;
+    return (
+      <div>
+        {dashboardContent}
+        <Link to="/createprofile">Create a Profile</Link>
+      </div>
+    );
   }
 }
 
