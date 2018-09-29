@@ -1,15 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Field.css";
 
-const Field = ({ name, type, placeholder, value, onChange }) => {
+const Field = ({ name, type, placeholder, value, onChange, id }) => {
   return (
-    <input
-      type={type}
-      placeholder={placeholder}
-      name={name}
-      value={value}
-      onChange={onChange}
-    />
+    <div>
+      <label for={id}>{id}</label>
+      <input
+        type={type}
+        placeholder={placeholder}
+        name={name}
+        value={value}
+        onChange={onChange}
+        id={id}
+      />
+    </div>
   );
 };
 
@@ -18,7 +23,8 @@ Field.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  id: PropTypes.string
 };
 
 export default Field;

@@ -47,6 +47,7 @@ class Login extends Component {
       <form onSubmit={this.onSubmit}>
         <Field
           name="email"
+          id="email"
           type="email"
           placeholder="Email"
           value={this.state.email}
@@ -54,6 +55,7 @@ class Login extends Component {
         />
         <Field
           type="password"
+          id="password"
           placeholder="Password"
           name="password"
           value={this.state.password}
