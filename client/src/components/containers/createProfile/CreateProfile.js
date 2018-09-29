@@ -76,6 +76,12 @@ class CreateProfile extends Component {
             value={this.state.bio}
             onChange={this.onChange}
           />
+          <SocialField
+            name="facebook"
+            placeholder="Your Facebook username"
+            value={this.state.facebook}
+            onChange={this.onChange}
+          />
         </form>
       </main>
     );
