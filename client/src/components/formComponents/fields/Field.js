@@ -5,7 +5,7 @@ import "./Field.css";
 const Field = ({ name, type, placeholder, value, onChange, id }) => {
   return (
     <div>
-      <label for={id}>{id}</label>
+      <label htmlFor={id}>{id}</label>
       <input
         type={type}
         placeholder={placeholder}
@@ -16,6 +16,10 @@ const Field = ({ name, type, placeholder, value, onChange, id }) => {
       />
     </div>
   );
+};
+
+Field.defaultProps = {
+  type: "text"
 };
 
 Field.propTypes = {
