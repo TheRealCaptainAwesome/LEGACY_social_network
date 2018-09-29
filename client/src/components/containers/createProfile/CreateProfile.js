@@ -70,6 +70,12 @@ class CreateProfile extends Component {
             addToList={this.addToList}
             itemArray={this.state.skills}
           />
+          <TextArea
+            name="bio"
+            placeholder="Tell us about yourself"
+            value={this.state.bio}
+            onChange={this.onChange}
+          />
         </form>
       </main>
     );
