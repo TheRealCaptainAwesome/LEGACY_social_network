@@ -19,17 +19,17 @@ class Dashboard extends Component {
     if (profile === null || loading) {
       dashboardContent = <Loader />;
     } else if (profile.noprofile) {
-      dashboardContent = <span>{user.name} has no profile</span>;
+      dashboardContent = (
+        <div>
+          <span>{user.name} has no profile</span>
+          <Link to="/createprofile">Create a Profile</Link>
+        </div>
+      );
     } else {
       dashboardContent = <span>Profile showing ehre.</span>;
     }
 
-    return (
-      <div>
-        {dashboardContent}
-        <Link to="/createprofile">Create a Profile</Link>
-      </div>
-    );
+    return <div>{dashboardContent}</div>;
   }
 }
 
