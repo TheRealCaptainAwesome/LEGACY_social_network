@@ -7,6 +7,11 @@ import TextArea from "../../formComponents/fields/TextArea";
 import SocialField from "../../formComponents/socialmedia/SocialField";
 import AddValue from "../../formComponents/addvalue/AddValue";
 
+//Icons for socialmediafield
+import facebook from "../../formComponents/socialmedia/facebook.png";
+import instagram from "../../formComponents/socialmedia/instagram.png";
+import twitter from "../../formComponents/socialmedia/twitter.png";
+
 class CreateProfile extends Component {
   state = {
     handle: "",
@@ -81,6 +86,21 @@ class CreateProfile extends Component {
             placeholder="Your Facebook username"
             value={this.state.facebook}
             onChange={this.onChange}
+            icon={facebook}
+          />
+          <SocialField
+            name="twitter"
+            placeholder="Your Twitter username"
+            value={this.state.twitter}
+            onChange={this.onChange}
+            icon={twitter}
+          />
+          <SocialField
+            name="instagram"
+            placeholder="Your Instagram username"
+            value={this.state.instagram}
+            onChange={this.onChange}
+            icon={instagram}
           />
         </form>
       </main>

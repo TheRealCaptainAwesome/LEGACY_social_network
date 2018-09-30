@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const SocialField = ({ name, placeholder, value, onChange }) => {
+const SocialField = ({ name, placeholder, value, onChange, icon }) => {
   return (
     <div>
-      <img alt={name} src="./facebook.svg" />
+      <img alt={name} src={icon} />
       <input
         type="text"
         placeholder={placeholder}
