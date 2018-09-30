@@ -38,11 +38,9 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { validationError, isValid } = validateProfile(req.body);
-
     if (!isValid) {
-      return res.json(validationError);
+      return res.status(400).json(validationError);
     }
-
     const err = {};
     const profileData = {};
     profileData.social_media = {};
@@ -51,7 +49,7 @@ router.post(
     if (req.body.handle) profileData.handle = req.body.handle;
     if (req.body.title) profileData.title = req.body.title;
     if (req.body.location) profileData.location = req.body.location;
-    if (req.body.skills) profileData.skills = req.body.skills.split(",");
+    if (req.body.skills) profileData.skills = req.body.skills;
     if (req.body.bio) profileData.bio = req.body.bio;
     if (req.body.location) profileData.location = req.body.location;
     if (req.body.twitter) {
@@ -65,7 +63,8 @@ router.post(
     }
 
     db.connectMongoose();
-    User.findOne({ _id: req.user.id }).then(profile => {
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      console.log(profile);
       if (profile) {
         Profile.findOneAndUpdate(
           { user: req.user.id },
@@ -73,18 +72,18 @@ router.post(
           { new: true }
         ).then(profile => {
           db.disconnectMongoose();
-          res.json(profile);
+          res.status(200).json(profile);
         });
       } else {
         Profile.findOne({ handle: profileData.handle }).then(profile => {
           if (profile) {
             db.disconnectMongoose();
             err.handle = "This handle already exists.";
-            res.json({ err });
+            res.status(400).json({ err });
           } else {
             new Profile(profileData).save().then(profile => {
               db.disconnectMongoose();
-              res.json(profile);
+              res.status(200).json(profile);
             });
           }
         });

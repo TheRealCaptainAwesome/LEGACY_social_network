@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 
 import Field from "../../formComponents/fields/Field";
 import TextArea from "../../formComponents/fields/TextArea";
 import SocialField from "../../formComponents/socialmedia/SocialField";
 import AddValue from "../../formComponents/addvalue/AddValue";
+
+// Redux
+import { createProfile } from "../../../redux/actions/profileActions";
 
 //Icons for socialmediafield
 import facebook from "../../formComponents/socialmedia/facebook.png";
@@ -28,7 +32,19 @@ class CreateProfile extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log(e);
+
+    const data = {
+      handle: this.state.handle,
+      title: this.state.title,
+      location: this.state.location,
+      skills: this.state.skills,
+      bio: this.state.bio,
+      facebook: this.state.facebook,
+      twitter: this.state.twitter,
+      instagram: this.state.instagram
+    };
+
+    this.props.createProfile(data, this.props.history);
   };
 
   onChange = e => {
@@ -102,6 +118,7 @@ class CreateProfile extends Component {
             onChange={this.onChange}
             icon={instagram}
           />
+          <input type="submit" />
         </form>
       </main>
     );
@@ -110,7 +127,8 @@ class CreateProfile extends Component {
 
 CreateProfile.propTypes = {
   profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
+  createProfile: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -118,4 +136,7 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps)(CreateProfile);
+export default connect(
+  mapStateToProps,
+  { createProfile }
+)(withRouter(CreateProfile));
