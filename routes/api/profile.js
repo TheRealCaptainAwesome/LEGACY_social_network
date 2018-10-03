@@ -222,7 +222,7 @@ router.delete(
 // Remove the profile matching the user
 // Remove the user matching user(req.user.id)
 router.delete(
-  "/deleteuser/",
+  "/deleteuser",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     db.connectMongoose();
