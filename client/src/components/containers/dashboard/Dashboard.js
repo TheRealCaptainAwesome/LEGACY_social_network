@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 // Redux
 import { connect } from "react-redux";
 import { getProfile } from "../../../redux/actions/profileActions";
+import DashboardNavbar from "./dashboardNavbar/DashboardNavbar";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -26,7 +27,14 @@ class Dashboard extends Component {
         </div>
       );
     } else {
-      dashboardContent = <span>Profile showing ehre.</span>;
+      dashboardContent = (
+        <div>
+          <p>
+            Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+          </p>
+          <DashboardNavbar />
+        </div>
+      );
     }
 
     return <div>{dashboardContent}</div>;
