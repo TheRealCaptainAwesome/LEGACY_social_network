@@ -5,13 +5,23 @@ import { Link } from "react-router-dom";
 
 // Redux
 import { connect } from "react-redux";
-import { getProfile } from "../../../redux/actions/profileActions";
+import {
+  getProfile,
+  deleteAccount
+} from "../../../redux/actions/profileActions";
 import DashboardNavbar from "./dashboardNavbar/DashboardNavbar";
 
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getProfile();
   }
+
+  onDeleteAccount = () => {
+    if (window.confirm("Are you sure?")) {
+      this.props.deleteAccount();
+    }
+  };
+
   render() {
     const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
@@ -33,6 +43,7 @@ class Dashboard extends Component {
             Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
           </p>
           <DashboardNavbar />
+          <button onClick={this.onDeleteAccount}>Delete Account</button>
         </div>
       );
     }
@@ -43,6 +54,7 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   getProfile: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired
 };
@@ -54,5 +66,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProfile }
+  { getProfile, deleteAccount }
 )(Dashboard);

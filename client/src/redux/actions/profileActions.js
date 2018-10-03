@@ -4,7 +4,8 @@ import {
   GET_PROFILE,
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
-  GET_ERRORS
+  GET_ERRORS,
+  SET_CURRENT_USER
 } from "./types";
 
 export const getProfile = () => dispatch => {
@@ -49,4 +50,21 @@ export const clearProfile = () => {
   return {
     type: CLEAR_CURRENT_PROFILE
   };
+};
+
+export const deleteAccount = () => dispatch => {
+  axios
+    .delete("/api/profile/deleteuser")
+    .then(res => {
+      dispatch({
+        type: SET_CURRENT_USER,
+        payload: {}
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
 };
