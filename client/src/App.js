@@ -12,6 +12,7 @@ import Main from "./components/containers/main/Main";
 import Register from "./components/containers/register/Register";
 import Dashboard from "./components/containers/dashboard/Dashboard";
 import CreateProfile from "./components/containers/createProfile/CreateProfile";
+import EditProfile from "./components/containers/editProfile/EditProfile.";
 
 // Routes that needs auth
 import AuthCheck from "./components/authCheckComponent/authCheck";
@@ -56,6 +57,9 @@ class App extends Component {
                   path="/createprofile"
                   component={CreateProfile}
                 />
+              </Switch>
+              <Switch>
+                <AuthCheck exact path="/editprofile" component={EditProfile} />
               </Switch>
             </div>
             <Footer />

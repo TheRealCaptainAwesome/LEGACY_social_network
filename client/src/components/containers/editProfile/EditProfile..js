@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
+import isEmpty from "../../../redux/utilities/isEmpty";
 
 import Field from "../../formComponents/fields/Field";
 import TextArea from "../../formComponents/fields/TextArea";
@@ -59,18 +60,56 @@ class EditProfile extends Component {
     this.setState({ skills: newState });
   };
 
+  loadEditFields = profile => {
+    profile.handle = !isEmpty(profile.handle) ? profile.handle : "";
+    profile.title = !isEmpty(profile.title) ? profile.title : "";
+    profile.location = !isEmpty(profile.location) ? profile.location : "";
+    profile.skills = !isEmpty(profile.skills) ? profile.skills : [];
+    profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
+    profile.social_media = !isEmpty(profile.social_media)
+      ? profile.social_media
+      : {};
+    profile.social_media.facebook = !isEmpty(profile.facebook)
+      ? profile.facebook
+      : "";
+    profile.social_media.twitter = !isEmpty(profile.twitter)
+      ? profile.twitter
+      : "";
+    profile.social_media.instagram = !isEmpty(profile.instagram)
+      ? profile.instagram
+      : "";
+
+    this.setState({
+      handle: profile.handle,
+      title: profile.title,
+      location: profile.location,
+      skills: profile.skills,
+      bio: profile.bio,
+      facebook: profile.facebook,
+      twitter: profile.twitter,
+      instagram: profile.instagram
+    });
+  };
+
   componentDidMount() {
     this.props.getProfile();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const profile = this.props.profile.profile;
+    if (prevProps.profile.profile !== profile) {
+      this.loadEditFields(profile);
+    }
   }
 
   render() {
     return (
       <main>
-        <h1>Create Your Profile</h1>
+        <h1>Edit Your Profile</h1>
         <form onSubmit={this.onSubmit}>
           <Field
             name="handle"
-            placeholder="Username"
+            placeholder={"Username"}
             value={this.state.handle}
             onChange={this.onChange}
             id="username"
