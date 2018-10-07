@@ -108,13 +108,6 @@ class EditProfile extends Component {
         <h1>Edit Your Profile</h1>
         <form onSubmit={this.onSubmit}>
           <Field
-            name="handle"
-            placeholder={"Username"}
-            value={this.state.handle}
-            onChange={this.onChange}
-            id="username"
-          />
-          <Field
             name="title"
             placeholder="Your title"
             value={this.state.title}
