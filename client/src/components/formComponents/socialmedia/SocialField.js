@@ -18,8 +18,8 @@ const SocialField = ({ name, placeholder, value, onChange, icon }) => {
 
 SocialField.propTypes = {
   name: PropTypes.string.isRequired,
+  value: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired
 };
 
