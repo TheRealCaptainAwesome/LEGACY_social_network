@@ -13,6 +13,7 @@ import Register from "./components/containers/register/Register";
 import Dashboard from "./components/containers/dashboard/Dashboard";
 import CreateProfile from "./components/containers/createProfile/CreateProfile";
 import EditProfile from "./components/containers/editProfile/EditProfile.";
+import AddExperience from "./components/containers/addexperience/AddExperience";
 
 // Routes that needs auth
 import AuthCheck from "./components/authCheckComponent/authCheck";
@@ -60,6 +61,13 @@ class App extends Component {
               </Switch>
               <Switch>
                 <AuthCheck exact path="/editprofile" component={EditProfile} />
+              </Switch>
+              <Switch>
+                <AuthCheck
+                  exact
+                  path="/addexperience"
+                  component={AddExperience}
+                />
               </Switch>
             </div>
             <Footer />
