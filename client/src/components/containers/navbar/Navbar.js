@@ -26,6 +26,9 @@ class Navbar extends Component {
               Log Out {user.name}
             </a>
           </li>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
         </ul>
       </nav>
     );
