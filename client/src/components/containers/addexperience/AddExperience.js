@@ -55,7 +55,7 @@ class AddExperience extends Component {
             id="title"
           />
           <Field
-            name="Company"
+            name="company"
             placeholder="Company Name"
             value={this.state.company}
             onChange={this.onChange}
