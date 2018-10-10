@@ -6,6 +6,7 @@ import Field from "../../formComponents/fields/Field";
 
 // Redux
 import { connect } from "react-redux";
+import { addExperience } from "../../../redux/actions/profileActions";
 
 class AddExperience extends Component {
   state = {
@@ -28,10 +29,24 @@ class AddExperience extends Component {
     });
   };
 
+  onSubmit = e => {
+    e.preventDefault();
+
+    const data = {
+      title: this.state.title,
+      company: this.state.company,
+      from: this.state.from,
+      to: this.state.to,
+      current: this.state.current
+    };
+
+    this.props.addExperience(data, this.props.history);
+  };
+
   render() {
     return (
       <main>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <Field
             name="title"
             placeholder="Job Title"
@@ -70,6 +85,7 @@ class AddExperience extends Component {
             onChange={this.onCheckboxClick}
           />
           <label htmlFor="current">Is this your current job?</label>
+          <input type="submit" />
         </form>
       </main>
     );
@@ -78,6 +94,7 @@ class AddExperience extends Component {
 
 AddExperience.propTypes = {
   profile: PropTypes.object.isRequired,
+  addExperience: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired
 };
 
@@ -86,4 +103,7 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps)(withRouter(AddExperience));
+export default connect(
+  mapStateToProps,
+  { addExperience }
+)(withRouter(AddExperience));

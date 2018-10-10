@@ -40,6 +40,20 @@ export const createProfile = (data, history) => dispatch => {
     });
 };
 
+export const addExperience = (data, history) => dispatch => {
+  axios
+    .post("/api/profile/experience", data)
+    .then(res => {
+      history.push("/dashboard");
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
 export const profileLoading = () => {
   return {
     type: PROFILE_LOADING

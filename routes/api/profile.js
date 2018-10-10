@@ -164,7 +164,7 @@ router.post(
   (req, res) => {
     const { validationError, isValid } = validateExperience(req.body);
     if (!isValid) {
-      res.json(validationError);
+      res.status(400).json(validationError);
     }
     const err = {};
 
@@ -183,12 +183,12 @@ router.post(
         profile.experience.unshift(experience);
         profile.save().then(profile => {
           db.disconnectMongoose();
-          res.json(profile);
+          res.status(200).json(profile);
         });
       } else {
         db.disconnectMongoose();
         err.profile = "Something went wrong.";
-        res.json(err);
+        res.status(400).json(err);
       }
     });
   }
