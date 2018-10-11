@@ -3,13 +3,15 @@ import PropTypes from "prop-types";
 import Loader from "../../loader/Loader";
 import { Link } from "react-router-dom";
 
+import DashboardNavbar from "./dashboardNavbar/DashboardNavbar";
+import Experience from "./experience/Experience";
+
 // Redux
 import { connect } from "react-redux";
 import {
   getProfile,
   deleteAccount
 } from "../../../redux/actions/profileActions";
-import DashboardNavbar from "./dashboardNavbar/DashboardNavbar";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -43,6 +45,7 @@ class Dashboard extends Component {
             Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
           </p>
           <DashboardNavbar />
+          <Experience experience={profile.experience} />
           <button onClick={this.onDeleteAccount}>Delete Account</button>
         </div>
       );
