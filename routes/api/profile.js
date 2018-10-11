@@ -197,7 +197,7 @@ router.post(
 // Route to handle deletion of experiences
 // Find profile matching user
 // Remove experience where expid-param matches experience id
-router.delete(
+router.post(
   "/deleteexperience/:expid",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
@@ -212,7 +212,7 @@ router.delete(
 
       profile.save().then(profile => {
         db.disconnectMongoose();
-        res.json(profile);
+        res.status(200).json(profile);
       });
     });
   }

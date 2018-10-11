@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
 import Moment from "react-moment";
 
 // Redux
 import { connect } from "react-redux";
+import { deleteExperience } from "../../../../redux/actions/profileActions";
 
 class Experience extends Component {
+  onDelete = id => {
+    this.props.deleteExperience(id);
+  };
+
   render() {
     const experience = this.props.experience.map(experience => {
       return (
@@ -21,6 +25,9 @@ class Experience extends Component {
               <Moment format="DD/MM/YYYY">{experience.to}</Moment>
             )}
           </p>
+          <button onClick={this.onDelete.bind(this, experience._id)}>
+            Delete Experience
+          </button>
         </div>
       );
     });
@@ -29,4 +36,11 @@ class Experience extends Component {
   }
 }
 
-export default connect(null)(withRouter(Experience));
+Experience.propTypes = {
+  deleteExperience: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { deleteExperience }
+)(Experience);

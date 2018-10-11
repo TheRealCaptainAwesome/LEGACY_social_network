@@ -54,6 +54,23 @@ export const addExperience = (data, history) => dispatch => {
     });
 };
 
+export const deleteExperience = id => dispatch => {
+  axios
+    .post(`/api/profile/deleteexperience/${id}`)
+    .then(res => {
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
 export const profileLoading = () => {
   return {
     type: PROFILE_LOADING
