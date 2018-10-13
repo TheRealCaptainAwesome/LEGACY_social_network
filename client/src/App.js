@@ -14,6 +14,7 @@ import Dashboard from "./components/containers/dashboard/Dashboard";
 import CreateProfile from "./components/containers/createProfile/CreateProfile";
 import EditProfile from "./components/containers/editProfile/EditProfile.";
 import AddExperience from "./components/containers/addexperience/AddExperience";
+import Profiles from "./components/containers/profiles/Profiles";
 
 // Routes that needs auth
 import AuthCheck from "./components/authCheckComponent/authCheck";
@@ -49,6 +50,7 @@ class App extends Component {
             <div className="container">
               <Route exact path="/" component={Main} />
               <Route exact path="/register" component={Register} />
+              <Route exact path="/profiles" component={Profiles} />
               <Switch>
                 <AuthCheck exact path="/dashboard" component={Dashboard} />
               </Switch>
