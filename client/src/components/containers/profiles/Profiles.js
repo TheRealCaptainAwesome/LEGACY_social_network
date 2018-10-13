@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Loader from "../../loader/Loader";
+import ProfileItem from "./ProfileItem";
 
 // Redux
 import { connect } from "react-redux";
@@ -19,7 +20,9 @@ class Profiles extends Component {
       profileItems = <Loader />;
     } else {
       profiles.length > 0
-        ? (profileItems = <h1>SHOULD LOAD HERE</h1>)
+        ? (profileItems = profiles.map(profile => {
+            return <ProfileItem key={profile._id} profile={profile} />;
+          }))
         : (profileItems = <h1>No profiles found.</h1>);
     }
 
