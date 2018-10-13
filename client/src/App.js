@@ -15,6 +15,7 @@ import CreateProfile from "./components/containers/createProfile/CreateProfile";
 import EditProfile from "./components/containers/editProfile/EditProfile.";
 import AddExperience from "./components/containers/addexperience/AddExperience";
 import Profiles from "./components/containers/profiles/Profiles";
+import Profile from "./components/containers/profile/Profile";
 
 // Routes that needs auth
 import AuthCheck from "./components/authCheckComponent/authCheck";
@@ -70,6 +71,9 @@ class App extends Component {
                   path="/addexperience"
                   component={AddExperience}
                 />
+              </Switch>
+              <Switch>
+                <AuthCheck exact path="/profile/:handle" component={Profile} />
               </Switch>
             </div>
             <Footer />
