@@ -32,7 +32,15 @@ class ProfileExperience extends Component {
       });
     }
 
-    return <div>{experiences}</div>;
+    return (
+      <div>
+        {experiences.length > 0 ? (
+          <div>{experiences}</div>
+        ) : (
+          <h3>No experience listed.</h3>
+        )}
+      </div>
+    );
   }
 }
 
