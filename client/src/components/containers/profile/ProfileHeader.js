@@ -7,7 +7,6 @@ import twitter from "../../formComponents/socialmedia/twitter.png";
 class ProfileHeader extends Component {
   render() {
     const { profile } = this.props;
-    console.log(profile);
 
     return (
       <div>

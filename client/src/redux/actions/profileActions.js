@@ -27,7 +27,7 @@ export const getProfile = () => dispatch => {
     );
 };
 
-export const getProfileByHandle = handle => dispatch => {
+export const getProfileByHandle = (handle, history) => dispatch => {
   dispatch(profileLoading());
   axios
     .get(`/api/profile/handle/${handle}`)
@@ -37,12 +37,13 @@ export const getProfileByHandle = handle => dispatch => {
         payload: res.data
       })
     )
-    .catch(err =>
+    .catch(err => {
       dispatch({
         type: GET_PROFILE,
         payload: null
-      })
-    );
+      });
+      history.push("/notfound");
+    });
 };
 
 export const createProfile = (data, history) => dispatch => {

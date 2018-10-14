@@ -16,6 +16,7 @@ import EditProfile from "./components/containers/editProfile/EditProfile.";
 import AddExperience from "./components/containers/addexperience/AddExperience";
 import Profiles from "./components/containers/profiles/Profiles";
 import Profile from "./components/containers/profile/Profile";
+import NotFound from "./components/containers/notFound/NotFound";
 
 // Routes that needs auth
 import AuthCheck from "./components/authCheckComponent/authCheck";
@@ -52,6 +53,7 @@ class App extends Component {
               <Route exact path="/" component={Main} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/profiles" component={Profiles} />
+              <Route exact path="/notfound" component={NotFound} />
               <Switch>
                 <AuthCheck exact path="/dashboard" component={Dashboard} />
               </Switch>
