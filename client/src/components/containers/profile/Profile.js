@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ProfileHeader from "./ProfileHeader";
+import Loader from "../../loader/Loader";
+import { Link } from "react-router-dom";
 
 // Redux
 import { connect } from "react-redux";
@@ -14,11 +16,25 @@ class Profile extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <ProfileHeader />
-      </div>
-    );
+    const { profile, loading } = this.props.profile;
+    let profileData;
+
+    if (profile === null || loading) {
+      profileData = <Loader />;
+    } else {
+      profileData = (
+        <div>
+          <div>
+            <Link to="/profiles">Back to Profiles</Link>
+          </div>
+          <div>
+            <ProfileHeader profile={profile} />
+          </div>
+        </div>
+      );
+    }
+
+    return <div>{profileData}</div>;
   }
 }
 
