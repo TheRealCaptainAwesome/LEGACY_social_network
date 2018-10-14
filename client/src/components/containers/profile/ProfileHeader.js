@@ -12,9 +12,7 @@ class ProfileHeader extends Component {
     return (
       <div>
         <h1>{profile.user.name}</h1>
-        <p>
-          {profile.title} at {profile.company}
-        </p>
+        <p>{profile.title}</p>
         <p>Living in {profile.location}</p>
         <div>
           {isEmpty(

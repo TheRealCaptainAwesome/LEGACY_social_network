@@ -14,7 +14,11 @@ class ProfileMain extends Component {
       <div>
         <div>
           <h2>Bio</h2>
-          <p>{isEmpty(profile.bio) ? null : profile.bio}</p>
+          <p>
+            {isEmpty(profile.bio)
+              ? `${profile.user.name} does not have a bio yet.`
+              : profile.bio}
+          </p>
         </div>
         <div>
           <h2>Skills</h2>
@@ -24,5 +28,9 @@ class ProfileMain extends Component {
     );
   }
 }
+
+ProfileMain.propTypes = {
+  profile: PropTypes.object.isRequired
+};
 
 export default ProfileMain;
