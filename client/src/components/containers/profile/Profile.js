@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ProfileHeader from "./ProfileHeader";
+import ProfileMain from "./ProfileMain";
 import Loader from "../../loader/Loader";
 import { Link } from "react-router-dom";
 
@@ -29,6 +30,7 @@ class Profile extends Component {
           </div>
           <div>
             <ProfileHeader profile={profile} />
+            <ProfileMain profile={profile} />
           </div>
         </div>
       );
