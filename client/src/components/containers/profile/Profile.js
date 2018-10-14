@@ -13,10 +13,7 @@ import { getProfileByHandle } from "../../../redux/actions/profileActions";
 class Profile extends Component {
   componentDidMount() {
     if (this.props.match.params.handle) {
-      this.props.getProfileByHandle(
-        this.props.match.params.handle,
-        this.props.history
-      );
+      this.props.getProfileByHandle(this.props.match.params.handle);
     }
   }
 
