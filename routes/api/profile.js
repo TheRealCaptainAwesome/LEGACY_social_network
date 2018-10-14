@@ -103,7 +103,7 @@ router.get("/handle/:handle", (req, res) => {
       if (!profile) {
         err.profile = "There is no profile called: " + req.params.handle;
         db.disconnectMongoose();
-        res.json(err);
+        res.status(400).json(err);
       } else {
         db.disconnectMongoose();
         res.json(profile);

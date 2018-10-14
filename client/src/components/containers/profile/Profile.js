@@ -4,7 +4,7 @@ import ProfileHeader from "./ProfileHeader";
 import ProfileMain from "./ProfileMain";
 import ProfileExperience from "./ProfileExperience";
 import Loader from "../../loader/Loader";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Redux
 import { connect } from "react-redux";
@@ -15,6 +15,13 @@ class Profile extends Component {
     if (this.props.match.params.handle) {
       this.props.getProfileByHandle(this.props.match.params.handle);
     }
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.profile.profile === null && this.props.profile.loading) {
+      this.props.history.push("/notfound");
+    }
+    return true;
   }
 
   render() {
@@ -54,4 +61,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getProfileByHandle }
-)(withRouter(Profile));
+)(Profile);
