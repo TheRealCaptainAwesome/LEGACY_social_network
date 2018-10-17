@@ -29,6 +29,9 @@ class Navbar extends Component {
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
+          <li>
+            <Link to="/feed">Feed</Link>
+          </li>
         </ul>
       </nav>
     );
