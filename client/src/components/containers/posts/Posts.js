@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import PostForm from "./PostForm";
+import PostFeed from "./PostFeed";
 import Loader from "../../loader/Loader";
 
 // Redux
@@ -13,10 +14,20 @@ class Posts extends Component {
   }
 
   render() {
+    const { posts, loading } = this.props.posts;
+    let feedContent;
+
+    if (posts === null || loading) {
+      feedContent = <Loader />;
+    } else {
+      feedContent = <PostFeed posts={posts} />;
+    }
+
     return (
       <div>
         <div>
           <PostForm />
+          {feedContent}
         </div>
       </div>
     );
