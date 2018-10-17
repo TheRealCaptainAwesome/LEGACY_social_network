@@ -5,8 +5,13 @@ import Loader from "../../loader/Loader";
 
 // Redux
 import { connect } from "react-redux";
+import { getPosts } from "../../../redux/actions/postActions";
 
 class Posts extends Component {
+  componentDidMount() {
+    this.props.getPosts();
+  }
+
   render() {
     return (
       <div>
@@ -18,4 +23,16 @@ class Posts extends Component {
   }
 }
 
-export default connect()(Posts);
+Posts.propTypes = {
+  posts: PropTypes.object.isRequired,
+  getPosts: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  posts: state.posts
+});
+
+export default connect(
+  mapStateToProps,
+  { getPosts }
+)(Posts);
