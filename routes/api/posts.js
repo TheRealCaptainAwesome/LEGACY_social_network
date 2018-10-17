@@ -24,13 +24,13 @@ router.post(
     const { validationError, isValid } = validatePost(req.body);
 
     if (!isValid) {
-      return res.json(validationError);
+      return res.status(400).json(validationError);
     }
 
     db.connectMongoose();
     createPost.save().then(post => {
       db.disconnectMongoose();
-      res.json(post);
+      res.status(200).json(post);
     });
   }
 );
