@@ -9,7 +9,18 @@ class PostItem extends Component {
   render() {
     const { post, auth } = this.props;
 
-    return <div>TODO</div>;
+    return (
+      <div>
+        <div>
+          <p>{post.text}</p>
+          <span>{post.author}</span>
+        </div>
+        <div>
+          <span>Likes: {post.likes.length}</span>
+        </div>
+        {post.user === auth.user.id ? <button>Delete Post</button> : null}
+      </div>
+    );
   }
 }
 
