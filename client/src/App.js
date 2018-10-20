@@ -17,6 +17,7 @@ import AddExperience from "./components/containers/addexperience/AddExperience";
 import Profiles from "./components/containers/profiles/Profiles";
 import Profile from "./components/containers/profile/Profile";
 import Posts from "./components/containers/posts/Posts";
+import Post from "./components/containers/post/Post";
 import NotFound from "./components/containers/notFound/NotFound";
 
 // Routes that needs auth
@@ -80,6 +81,9 @@ class App extends Component {
               </Switch>
               <Switch>
                 <AuthCheck exact path="/feed" component={Posts} />
+              </Switch>
+              <Switch>
+                <AuthCheck exact path="/post/:id" component={Post} />
               </Switch>
             </div>
             <Footer />
