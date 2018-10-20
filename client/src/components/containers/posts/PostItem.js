@@ -4,11 +4,15 @@ import { Link } from "react-router-dom";
 
 // Redux
 import { connect } from "react-redux";
-import { deletePost } from "../../../redux/actions/postActions";
+import { deletePost, postLikeToggle } from "../../../redux/actions/postActions";
 
 class PostItem extends Component {
   onDeletePost = id => {
     this.props.deletePost(id);
+  };
+
+  onLike = id => {
+    this.props.postLikeToggle(id);
   };
 
   render() {
@@ -21,7 +25,9 @@ class PostItem extends Component {
           <span>{post.author}</span>
         </div>
         <div>
-          <span>Likes: {post.likes.length}</span>
+          <span onClick={this.onLike.bind(this, post._id)}>
+            Likes: {post.likes.length}
+          </span>
           <Link to={`/post/${post._id}`}>Comments</Link>
         </div>
         {post.user === auth.user.id ? (
@@ -37,7 +43,8 @@ class PostItem extends Component {
 PostItem.propTypes = {
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
-  deletePost: PropTypes.func.isRequired
+  deletePost: PropTypes.func.isRequired,
+  postLikeToggle: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -46,5 +53,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { deletePost }
+  { deletePost, postLikeToggle }
 )(PostItem);
