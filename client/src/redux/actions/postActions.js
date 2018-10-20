@@ -60,6 +60,20 @@ export const deletePost = id => dispatch => {
     });
 };
 
+export const postLikeToggle = id => dispatch => {
+  axios
+    .post(`/api/posts/like/${id}`)
+    .then(res => {
+      dispatch(getPosts());
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
 export const postLoading = () => {
   return {
     type: POST_LOADING
