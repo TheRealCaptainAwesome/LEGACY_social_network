@@ -1,6 +1,12 @@
 import axios from "axios";
 
-import { ADD_POST, GET_POSTS, GET_ERRORS, POST_LOADING } from "./types";
+import {
+  ADD_POST,
+  GET_POSTS,
+  GET_ERRORS,
+  POST_LOADING,
+  DELETE_POST
+} from "./types";
 
 export const addPost = data => dispatch => {
   axios
@@ -33,6 +39,23 @@ export const getPosts = () => dispatch => {
       dispatch({
         type: GET_POSTS,
         payload: null
+      });
+    });
+};
+
+export const deletePost = id => dispatch => {
+  axios
+    .delete(`/api/posts/${id}`)
+    .then(res => {
+      dispatch({
+        type: DELETE_POST,
+        payload: id
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
       });
     });
 };
