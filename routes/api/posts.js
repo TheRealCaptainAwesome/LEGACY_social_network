@@ -87,7 +87,7 @@ router.delete(
         .then(post => {
           if (post.user.toString() !== req.user.id) {
             db.disconnectMongoose();
-            return res.json({
+            return res.status(400).json({
               err: "User not authorized to remove this post."
             });
           }
@@ -96,13 +96,15 @@ router.delete(
             .remove()
             .then(() => {
               db.disconnectMongoose();
-              return res.json({ success: true });
+              return res.status(200).json({ success: true });
             })
             .catch(err => {
-              res.json({ err: "Post not found." });
+              res.status(400).json({ err: "Post not found." });
             });
         })
-        .catch(err => res.json({ err: "The post could not be found." }));
+        .catch(err =>
+          res.status(400).json({ err: "The post could not be found." })
+        );
     });
   }
 );
@@ -130,18 +132,22 @@ router.post(
 
             post.save().then(unliked => {
               db.disconnectMongoose();
-              return res.json({ liked: "You successfully unliked this post." });
+              return res
+                .status(200)
+                .json({ liked: "You successfully unliked this post." });
             });
           } else {
             post.likes.push({ user: req.user.id });
 
             post.save().then(liked => {
               db.disconnectMongoose();
-              return res.json({ liked: "You successfully liked this post!" });
+              return res
+                .status(200)
+                .json({ liked: "You successfully liked this post!" });
             });
           }
         })
-        .catch(err => res.json({ err: "Post not found." }));
+        .catch(err => res.status(400).json({ err: "Post not found." }));
     });
   }
 );
