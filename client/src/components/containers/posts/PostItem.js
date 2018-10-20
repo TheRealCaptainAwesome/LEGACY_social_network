@@ -15,6 +15,20 @@ class PostItem extends Component {
     this.props.postLikeToggle(id);
   };
 
+  addLikedClass = likes => {
+    const { auth } = this.props;
+
+    if (
+      likes.filter(like => {
+        return like.user === auth.user.id;
+      }).length > 0
+    ) {
+      return "liked";
+    } else {
+      return null;
+    }
+  };
+
   render() {
     const { post, auth } = this.props;
 
@@ -25,7 +39,10 @@ class PostItem extends Component {
           <span>{post.author}</span>
         </div>
         <div>
-          <span onClick={this.onLike.bind(this, post._id)}>
+          <span
+            className={this.addLikedClass(post.likes)}
+            onClick={this.onLike.bind(this, post._id)}
+          >
             Likes: {post.likes.length}
           </span>
           <Link to={`/post/${post._id}`}>Comments</Link>
