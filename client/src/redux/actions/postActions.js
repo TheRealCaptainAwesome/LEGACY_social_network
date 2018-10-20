@@ -5,7 +5,8 @@ import {
   GET_POSTS,
   GET_ERRORS,
   POST_LOADING,
-  DELETE_POST
+  DELETE_POST,
+  GET_POST
 } from "./types";
 
 export const addPost = data => dispatch => {
@@ -70,6 +71,24 @@ export const postLikeToggle = id => dispatch => {
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
+      });
+    });
+};
+
+export const getPost = id => dispatch => {
+  dispatch(postLoading());
+  axios
+    .get(`/api/posts/${id}`)
+    .then(res => {
+      dispatch({
+        type: GET_POST,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_POST,
+        payload: null
       });
     });
 };
