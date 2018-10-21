@@ -93,6 +93,23 @@ export const getPost = id => dispatch => {
     });
 };
 
+export const addComment = (postId, comment) => dispatch => {
+  axios
+    .post(`/api/posts/comment/${postId}`, comment)
+    .then(res => {
+      dispatch({
+        type: GET_POST,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
 export const postLoading = () => {
   return {
     type: POST_LOADING
