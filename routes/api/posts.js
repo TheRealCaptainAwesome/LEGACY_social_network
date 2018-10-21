@@ -206,23 +206,23 @@ router.delete(
         ) {
           const remove = post.comments
             .map(comment => {
-              comment._id.toString();
+              return comment._id.toString();
             })
             .indexOf(req.params.commentid);
 
           post.comments.splice(remove, 1);
           post.save().then(post => {
             db.disconnectMongoose();
-            return res.json(post);
+            return res.status(200).json(post);
           });
         } else {
           db.disconnectMongoose();
-          return res.json({ err: "Comment could not be found." });
+          return res.status(400).json({ err: "Comment could not be found." });
         }
       })
       .catch(err => {
         db.disconnectMongoose();
-        return res.json({
+        return res.status(400).json({
           err: "Post not found."
         });
       });

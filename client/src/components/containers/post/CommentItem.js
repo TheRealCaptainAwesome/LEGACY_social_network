@@ -1,9 +1,53 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+
+// Redux
+import { connect } from "react-redux";
+import { deleteComment } from "../../../redux/actions/postActions";
 
 class CommentItem extends Component {
+  onDeleteComment = (postId, commentId) => {
+    this.props.deleteComment(postId, commentId);
+  };
+
   render() {
-    return <div>TODO</div>;
+    const { comment, postId, auth } = this.props;
+    return (
+      <div>
+        <div>
+          <p>
+            {comment.name} - {comment.date}
+          </p>
+        </div>
+        <div>
+          <p>{comment.text}</p>
+        </div>
+        {comment.user === auth.user.id ? (
+          <div>
+            <button
+              onClick={this.onDeleteComment.bind(this, postId, comment._id)}
+            >
+              Delete Comment
+            </button>
+          </div>
+        ) : null}
+      </div>
+    );
   }
 }
 
-export default CommentItem;
+CommentItem.propTypes = {
+  deleteComment: PropTypes.func.isRequired,
+  comment: PropTypes.object.isRequired,
+  postId: PropTypes.string.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { deleteComment }
+)(CommentItem);
