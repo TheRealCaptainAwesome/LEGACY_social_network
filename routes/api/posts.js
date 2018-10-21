@@ -163,7 +163,7 @@ router.post(
     const { validationError, isValid } = validateComment(req.body);
 
     if (!isValid) {
-      return res.json(validationError);
+      return res.status(400).json(validationError);
     }
 
     db.connectMongoose();
@@ -179,11 +179,11 @@ router.post(
         .save()
         .then(post => {
           db.disconnectMongoose();
-          return res.json(post);
+          return res.status(200).json(post);
         })
         .catch(err => {
           db.disconnectMongoose();
-          return res.json({ err: "Post not found." });
+          return res.status(400).json({ err: "Post not found." });
         });
     });
   }
