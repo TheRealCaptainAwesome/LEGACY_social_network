@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Loader from "../../loader/Loader";
 import PostItem from "./PostItem";
 import CreateComment from "./CreateComment";
+import CommentFeed from "./CommentFeed";
 
 // Redux
 import { connect } from "react-redux";
@@ -23,6 +24,7 @@ class Post extends Component {
         <div>
           <PostItem post={post} />
           <CreateComment postId={post._id} />
+          <CommentFeed postId={post._id} comments={post.comments} />
         </div>
       );
     }
