@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Loader from "../../loader/Loader";
 import PostItem from "./PostItem";
+import CreateComment from "./CreateComment";
 
 // Redux
 import { connect } from "react-redux";
@@ -18,7 +19,12 @@ class Post extends Component {
     if (Object.keys(post).length === 0 || loading || post === null) {
       content = <Loader />;
     } else {
-      content = <PostItem post={post} />;
+      content = (
+        <div>
+          <PostItem post={post} />
+          <CreateComment postId={post._id} />
+        </div>
+      );
     }
 
     return <div>{content}</div>;
