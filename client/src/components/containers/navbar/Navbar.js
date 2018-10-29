@@ -17,20 +17,20 @@ class Navbar extends Component {
   };
 
   render() {
-    const { isAuthenticated, user } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;
     const loggedInLinks = (
       <nav>
         <ul>
-          <li>
-            <a href="" onClick={this.onLogout}>
-              Log Out {user.name}
-            </a>
-          </li>
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
           <li>
             <Link to="/feed">Feed</Link>
+          </li>
+          <li>
+            <a href="" onClick={this.onLogout}>
+              Log Out
+            </a>
           </li>
         </ul>
       </nav>
