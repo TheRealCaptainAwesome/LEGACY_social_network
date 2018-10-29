@@ -341,3 +341,42 @@
   }
 
   /*============== MAIN ============== */
+
+body {
+    background-color: #eeeeee;
+  }
+
+/* ================ HEADER =========== */
+
+header {
+  background-color: #1376AA;
+  color: #eeeeee;
+}
+
+header nav {
+  display: block;
+}
+
+header nav ul {
+  padding: 0;
+}
+
+header nav ul li {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 10px;
+  background-color: #004b7b;
+  border-radius: 5%;
+}
+
+header nav ul a {
+  color: #eeeeee;
+}
+
+ul {
+  list-style: none;
+}
+
+ul a {
+  text-decoration: none;
+}
