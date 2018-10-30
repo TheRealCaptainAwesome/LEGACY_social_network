@@ -49,7 +49,7 @@ class App extends Component {
     return (
       <Provider store={Store}>
         <Router>
-          <div>
+          <div className="wrapper">
             <Navbar />
             <div className="container">
               <Route exact path="/" component={Main} />

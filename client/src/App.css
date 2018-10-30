@@ -342,15 +342,28 @@
 
   /*============== MAIN ============== */
 
+html, body {
+  min-height: 100vh;
+}
+
 body {
     background-color: #eeeeee;
   }
+
+#root {
+  min-height: 100vh;
+}
+
+.wrapper {
+  min-height: 100vh;
+}
 
 /* ================ HEADER =========== */
 
 header {
   background-color: #1376AA;
   color: #eeeeee;
+  padding-top: 0;
 }
 
 header nav {
@@ -380,3 +393,5 @@ ul {
 ul a {
   text-decoration: none;
 }
+
+/* ============== Container Area ================= */
