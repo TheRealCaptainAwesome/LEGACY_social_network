@@ -356,6 +356,8 @@ body {
 
 .wrapper {
   min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 /* ================ HEADER =========== */
@@ -367,6 +369,7 @@ header {
   display: flex;
   justify-content: initial;
   flex-wrap: wrap;
+  height: 150px;
 }
 
 .logoNtitle {
@@ -409,8 +412,17 @@ ul a {
   text-decoration: none;
 }
 
-/* ========= Container Area ============ */
+/* ========= CONTAINER AREA ============ */
 
 .container {
-  min-height: 80vh;
+  width: 100%;
+  min-height: calc( 100vh - (175px + 100px) );
+}
+
+/* ========== FOOTER =============== */
+
+footer {
+  background-color: #1376AA;
+  width: 100%;
+  height: 100px;
 }
