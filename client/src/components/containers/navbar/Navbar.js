@@ -21,17 +21,16 @@ class Navbar extends Component {
     const loggedInLinks = (
       <nav>
         <ul>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="/feed">Feed</Link>
-          </li>
-          <li>
-            <a href="" onClick={this.onLogout}>
-              Log Out
-            </a>
-          </li>
+          <Link to="/dashboard">
+            <li>Dashboard</li>
+          </Link>
+
+          <Link to="/feed">
+            <li>Feed</li>
+          </Link>
+          <a href="" onClick={this.onLogout}>
+            <li>Log Out </li>
+          </a>
         </ul>
       </nav>
     );
@@ -39,12 +38,13 @@ class Navbar extends Component {
     const notLoggedInLinks = (
       <nav>
         <ul>
-          <li>
-            <Link to="/">Sign In</Link>
-          </li>
-          <li>
-            <Link to="/register">Sign Up</Link>
-          </li>
+          <Link to="/">
+            <li>Sign In</li>
+          </Link>
+
+          <Link to="/register">
+            <li>Sign Up</li>
+          </Link>
         </ul>
       </nav>
     );
