@@ -364,10 +364,21 @@ header {
   background-color: #1376AA;
   color: #eeeeee;
   padding-top: 0;
+  display: flex;
+  justify-content: initial;
+  flex-wrap: wrap;
+}
+
+.logoNtitle {
+  width: 100%;
+}
+
+.logoNtitle h1 {
+  text-align: center;
 }
 
 header nav {
-  display: block;
+  width: 100%;
 }
 
 header nav ul {
@@ -375,11 +386,15 @@ header nav ul {
 }
 
 header nav ul li {
-  display: inline-block;
+  display: block;
+  text-align: center;
   padding: 5px 10px;
-  margin-right: 10px;
+  margin: 15px 10px;
   background-color: #004b7b;
-  border-radius: 5%;
+}
+
+header nav ul li:hover {
+  background-color: #002f4d;
 }
 
 header nav ul a {
@@ -394,3 +409,8 @@ ul a {
   text-decoration: none;
 }
 
+/* ========= Container Area ============ */
+
+.container {
+  min-height: 80vh;
+}

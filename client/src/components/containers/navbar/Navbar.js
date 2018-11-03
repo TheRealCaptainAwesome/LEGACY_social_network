@@ -40,10 +40,10 @@ class Navbar extends Component {
       <nav>
         <ul>
           <li>
-            <Link to="/register">Sign Up</Link>
+            <Link to="/">Sign In</Link>
           </li>
           <li>
-            <Link to="/">Sign In</Link>
+            <Link to="/register">Sign Up</Link>
           </li>
         </ul>
       </nav>
