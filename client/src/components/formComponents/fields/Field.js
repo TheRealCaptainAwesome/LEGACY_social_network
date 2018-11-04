@@ -2,7 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Field.css";
 
-const Field = ({ name, type, placeholder, value, onChange, id, disabled }) => {
+const Field = ({
+  name,
+  type,
+  placeholder,
+  value,
+  onChange,
+  id,
+  disabled,
+  errors
+}) => {
   return (
     <div>
       <label htmlFor={id}>{id}</label>
@@ -15,17 +24,20 @@ const Field = ({ name, type, placeholder, value, onChange, id, disabled }) => {
         id={id}
         disabled={disabled}
       />
+      {errors !== null ? <span className="error">{errors}</span> : null}
     </div>
   );
 };
 
 Field.defaultProps = {
+  errors: null,
   type: "text"
 };
 
 Field.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  errors: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,

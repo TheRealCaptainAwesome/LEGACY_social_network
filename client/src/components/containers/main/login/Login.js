@@ -43,6 +43,14 @@ class Login extends Component {
   }
 
   render() {
+    const { errors } = this.props;
+    let validation =
+      errors.validationError !== undefined
+        ? Object.keys(errors.validationError).map(key => {
+            return key;
+          })
+        : null;
+
     return (
       <form onSubmit={this.onSubmit}>
         <Field
@@ -52,6 +60,11 @@ class Login extends Component {
           placeholder="Email"
           value={this.state.email}
           onChange={this.onInputChange}
+          errors={
+            validation !== null && validation.includes("email")
+              ? errors.validationError.email
+              : null
+          }
         />
         <Field
           type="password"
@@ -60,6 +73,11 @@ class Login extends Component {
           name="password"
           value={this.state.password}
           onChange={this.onInputChange}
+          errors={
+            validation !== null && validation.includes("password")
+              ? errors.validationError.password
+              : null
+          }
         />
         <div>
           <input type="submit" value="Log In" />
