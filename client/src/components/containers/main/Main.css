@@ -25,3 +25,7 @@ form input[type="submit"] {
     color: #eeeeee;
     padding: 10px 20px;
 }
+
+form input[type="submit"]:hover {
+    background-color: #002f4d;
+}
