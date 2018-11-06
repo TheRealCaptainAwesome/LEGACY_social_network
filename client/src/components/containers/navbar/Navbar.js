@@ -19,6 +19,9 @@ class Navbar extends Component {
   render() {
     const { isAuthenticated } = this.props.auth;
     const loggedInLinks = (
+      // TODO:
+      // LoggedInLinks needs toggle button on small viewports
+      // Displayed toggle should be static and above everything else
       <nav>
         <ul>
           <Link to="/dashboard">
