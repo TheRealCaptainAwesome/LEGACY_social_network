@@ -10,19 +10,44 @@ import { clearProfile } from "../../../redux/actions/profileActions";
 import "./Navbar.css";
 
 class Navbar extends Component {
+  state = {
+    toggle: false
+  };
+
   onLogout = e => {
     e.preventDefault();
     this.props.clearProfile();
     this.props.logOut();
   };
 
+  onToggle = () => {
+    this.setState({
+      toggle: !this.state.toggle
+    });
+  };
+
   render() {
     const { isAuthenticated } = this.props.auth;
+
+    const toggleMenu = (
+      <svg
+        fill="#000000"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+        onClick={this.onToggle}
+      >
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+      </svg>
+    );
+
     const loggedInLinks = (
       // TODO:
       // LoggedInLinks needs toggle button on small viewports
       // Displayed toggle should be static and above everything else
-      <nav>
+      <nav className="loggedIn">
         <ul>
           <Link to="/dashboard">
             <li>Dashboard</li>
@@ -57,7 +82,8 @@ class Navbar extends Component {
         <div className="logoNtitle">
           <h1>Social Network</h1>
         </div>
-        {isAuthenticated ? loggedInLinks : notLoggedInLinks}
+        {isAuthenticated ? toggleMenu : notLoggedInLinks}
+        {this.state.toggle ? loggedInLinks : null}
       </header>
     );
   }
