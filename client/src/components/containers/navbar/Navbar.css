@@ -8,3 +8,9 @@ header {
 header h1 {
     margin: 0;
 }
+
+.loggedIn {
+    background-color: #1376aa;
+    position: static;
+    z-index: 30;
+}
