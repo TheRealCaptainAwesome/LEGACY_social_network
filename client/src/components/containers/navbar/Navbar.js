@@ -46,7 +46,8 @@ class Navbar extends Component {
     const loggedInLinks = (
       // TODO:
       // CSS needed
-      // Toggle fucntionality needs to be removed on wider viewports
+      // Toggle fucntionality needs to be removed on wider viewports¨
+      // Toogle needs animation
       <nav className="loggedIn">
         <ul>
           <Link to="/dashboard">
