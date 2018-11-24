@@ -50,6 +50,7 @@ class Register extends Component {
         <form onSubmit={this.onSubmit}>
           <Field
             type="text"
+            id="name"
             placeholder="Name"
             name="name"
             value={this.state.name}
@@ -57,6 +58,7 @@ class Register extends Component {
           />
           <Field
             type="text"
+            id="email"
             placeholder="Email"
             name="email"
             value={this.state.email}
@@ -64,6 +66,7 @@ class Register extends Component {
           />
           <Field
             type="password"
+            id="password"
             placeholder="Password"
             name="password"
             value={this.state.password}
