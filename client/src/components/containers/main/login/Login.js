@@ -80,7 +80,7 @@ class Login extends Component {
           }
         />
         <div>
-          <input type="submit" value="Log In" />
+          <input className="logIn" type="submit" value="Log In" />
         </div>
       </form>
     );

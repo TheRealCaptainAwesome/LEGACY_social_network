@@ -29,3 +29,7 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
     background-color: #002f4d;
 }
+
+form input[type="submit"].logIn {
+    width: 100%;
+}
