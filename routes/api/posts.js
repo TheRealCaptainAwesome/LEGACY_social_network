@@ -48,9 +48,9 @@ router.get(
       .sort({ date: "desc" })
       .then(posts => {
         db.disconnectMongoose();
-        res.json(posts);
+        res.status(200).json(posts);
       })
-      .catch(err => res.json({ err: "No posts found." }));
+      .catch(err => res.status(400).json({ err: "No posts found." }));
   }
 );
 
@@ -66,9 +66,11 @@ router.get(
     Post.findById(req.params.id)
       .then(post => {
         db.disconnectMongoose();
-        res.json(post);
+        res.status(200).json(post);
       })
-      .catch(err => res.json({ err: "No post found with that id." }));
+      .catch(err =>
+        res.status(400).json({ err: "No post found with that id." })
+      );
   }
 );
 

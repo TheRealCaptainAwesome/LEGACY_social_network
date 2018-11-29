@@ -21,10 +21,10 @@ router.get(
         if (!profile) {
           err.noprofile = "This user has no profile. Yet.";
           db.disconnectMongoose();
-          res.json(err);
+          res.status(400).json(err);
         }
         db.disconnectMongoose();
-        res.json(profile);
+        res.status(200).json(profile);
       });
   }
 );
@@ -106,7 +106,7 @@ router.get("/handle/:handle", (req, res) => {
         res.status(400).json(err);
       } else {
         db.disconnectMongoose();
-        res.json(profile);
+        res.status(200).json(profile);
       }
     });
 });
@@ -122,14 +122,14 @@ router.get("/user/:userid", (req, res) => {
       if (!profile) {
         err.profile = "There is no profile with the id of: " + req.params.id;
         db.disconnectMongoose();
-        res.json(err);
+        res.status(400).json(err);
       } else {
         db.disconnectMongoose();
-        res.json(profile);
+        res.status(200).json(profile);
       }
     })
     .catch(err =>
-      res.json({
+      res.status(400).json({
         profile: "There is no profile with the id of: " + req.params.userid
       })
     );
@@ -146,10 +146,10 @@ router.get("/all", (req, res) => {
       if (!profiles) {
         err.profiles = "There are no profiles.";
         db.disconnectMongoose();
-        res.json(err);
+        res.status(400).json(err);
       } else {
         db.disconnectMongoose();
-        res.json(profiles);
+        res.status(200).json(profiles);
       }
     });
 });
@@ -229,7 +229,9 @@ router.delete(
     Profile.findOneAndRemove({ user: req.user.id }).then(() => {
       User.findOneAndRemove({ _id: req.user.id }).then(() => {
         db.disconnectMongoose();
-        res.json({ message: "User has successfully been removed." });
+        res
+          .status(200)
+          .json({ message: "User has successfully been removed." });
       });
     });
   }

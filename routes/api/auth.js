@@ -40,7 +40,7 @@ router.post("/register", (req, res) => {
             createUser.password = hash;
             createUser.save().then(user => {
               db.disconnectMongoose();
-              res.json(user);
+              res.status(200).json(user);
             });
           }
         });
@@ -89,9 +89,11 @@ router.post("/login", (req, res) => {
             { expiresIn: 86400 },
             (err, token) => {
               if (err) {
-                res.json({ error: err });
+                res.status(200).json({ error: err });
               } else {
-                res.json({ success: true, token: "Bearer " + token });
+                res
+                  .status(200)
+                  .json({ success: true, token: "Bearer " + token });
               }
             }
           );
