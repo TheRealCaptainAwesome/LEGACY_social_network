@@ -16,6 +16,9 @@ class Navbar extends Component {
 
   onLogout = e => {
     e.preventDefault();
+    this.setState({
+      toggle: !this.state.toggle
+    });
     this.props.clearProfile();
     this.props.logOut();
   };
@@ -48,7 +51,6 @@ class Navbar extends Component {
       // CSS needed
       // Toggle functionality needs to be removed on wider viewports¨
       // Toogle needs animation
-      // Toogle functionality logout bug needs to be fixed
       <nav className="loggedIn">
         <ul>
           <Link to="/dashboard">
