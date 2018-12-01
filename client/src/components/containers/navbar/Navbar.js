@@ -83,9 +83,11 @@ class Navbar extends Component {
 
     return (
       <header>
-        <div className="logoNtitle">
-          <h1>Social Network</h1>
-        </div>
+        {!this.state.toggle ? (
+          <div className="logoNtitle">
+            <h1>Social Network</h1>
+          </div>
+        ) : null}
         {isAuthenticated ? toggleMenu : notLoggedInLinks}
         {this.state.toggle ? loggedInLinks : null}
       </header>
