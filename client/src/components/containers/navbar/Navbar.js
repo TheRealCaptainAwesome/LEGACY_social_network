@@ -33,17 +33,32 @@ class Navbar extends Component {
     const { isAuthenticated } = this.props.auth;
 
     const toggleMenu = (
-      <svg
-        fill="#000000"
-        height="24"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-        onClick={this.onToggle}
-      >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-      </svg>
+      <div className="toggleMenu">
+        {this.state.toggle ? (
+          <svg
+            height="48"
+            viewBox="0 0 48 48"
+            width="48"
+            xmlns="http://www.w3.org/2000/svg"
+            onClick={this.onToggle}
+          >
+            <path d="M38 12.83l-2.83-2.83-11.17 11.17-11.17-11.17-2.83 2.83 11.17 11.17-11.17 11.17 2.83 2.83 11.17-11.17 11.17 11.17 2.83-2.83-11.17-11.17z" />
+            <path d="M0 0h48v48h-48z" fill="none" />
+          </svg>
+        ) : (
+          <svg
+            fill="#000000"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+            onClick={this.onToggle}
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        )}
+      </div>
     );
 
     const loggedInLinks = (
