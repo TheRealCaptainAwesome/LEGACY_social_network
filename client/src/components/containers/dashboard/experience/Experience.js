@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Moment from "react-moment";
 
+import "./Experience.css";
+
 // Redux
 import { connect } from "react-redux";
 import { deleteExperience } from "../../../../redux/actions/profileActions";
@@ -14,9 +16,9 @@ class Experience extends Component {
   render() {
     const experience = this.props.experience.map(experience => {
       return (
-        <div key={experience._id}>
+        <div key={experience._id} className="experienceItem">
           <h2>{experience.title}</h2>
-          <p>{experience.company}</p>
+          <p>Company: {experience.company}</p>
           <p>
             <Moment format="DD/MM/YYYY">{experience.from}</Moment> -{" "}
             {experience.current ? (
@@ -32,7 +34,7 @@ class Experience extends Component {
       );
     });
 
-    return <div>{experience}</div>;
+    return <div className="experienceContainer">{experience}</div>;
   }
 }
 
