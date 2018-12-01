@@ -1,0 +1,20 @@
+.dashboardMain h3 {
+    text-align: center;
+}
+
+.dashboardMain ul {
+    padding-left: 0;
+}
+
+.dashboardMain ul li {
+    text-align: center;
+    width: 50%;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #1376AA;
+}
+
+.dashboardMain ul li a {
+    color: #eeeeee;
+    font-weight: bold;
+}

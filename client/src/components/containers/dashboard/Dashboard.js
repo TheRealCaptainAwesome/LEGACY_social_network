@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import DashboardNavbar from "./dashboardNavbar/DashboardNavbar";
 import Experience from "./experience/Experience";
 
+import "./Dashboard.css";
+
 // Redux
 import { connect } from "react-redux";
 import {
@@ -40,10 +42,10 @@ class Dashboard extends Component {
       );
     } else {
       dashboardContent = (
-        <div>
-          <p>
+        <div className="dashboardMain">
+          <h3>
             Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
-          </p>
+          </h3>
           <DashboardNavbar />
           <Experience experience={profile.experience} />
           <button onClick={this.onDeleteAccount}>Delete Account</button>
