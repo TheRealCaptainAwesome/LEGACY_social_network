@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+.dashboardMain h3 a {
+    color: #444444;
+}
+
 .dashboardMain ul {
     padding-left: 0;
 }
