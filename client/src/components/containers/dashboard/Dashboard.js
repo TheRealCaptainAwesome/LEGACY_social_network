@@ -48,7 +48,9 @@ class Dashboard extends Component {
           </h3>
           <DashboardNavbar />
           <Experience experience={profile.experience} />
-          <button onClick={this.onDeleteAccount}>Delete Account</button>
+          <button className="deleteAccount" onClick={this.onDeleteAccount}>
+            Delete Account
+          </button>
         </div>
       );
     }

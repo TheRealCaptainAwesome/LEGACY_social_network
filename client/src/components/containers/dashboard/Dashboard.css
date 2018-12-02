@@ -18,3 +18,12 @@
     color: #eeeeee;
     font-weight: bold;
 }
+
+.deleteAccount {
+    margin: 10px auto;
+    display: block;
+    color: #eeeeee;
+    background-color: #D12A0B;
+    border: none;
+    padding: 10px;
+}
