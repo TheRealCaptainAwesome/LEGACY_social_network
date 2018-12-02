@@ -21,7 +21,7 @@ class Dashboard extends Component {
   }
 
   onDeleteAccount = () => {
-    if (window.confirm("Are you sure?")) {
+    if (window.confirm("Are you sure? This action can not be undone!")) {
       this.props.deleteAccount();
     }
   };
