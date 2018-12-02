@@ -2,4 +2,24 @@
     text-align: center;
     width: 80%;
     margin: 10px auto;
+    padding-bottom: 20px;
+    border-top: solid 1px rgb(121, 118, 118);
+    border-bottom: solid 1px rgb(121, 118, 118);
+}
+
+.experienceItem span {
+    font-weight: bold;
+}
+
+.experienceItem h2 {
+    font-size: 20px;
+}
+
+.deleteExperience {
+    background-color: #D12A0B;
+    color: #eeeeee;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    width: 182px;
 }

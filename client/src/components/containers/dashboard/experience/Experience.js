@@ -18,16 +18,24 @@ class Experience extends Component {
       return (
         <div key={experience._id} className="experienceItem">
           <h2>{experience.title}</h2>
-          <p>Company: {experience.company}</p>
           <p>
-            <Moment format="DD/MM/YYYY">{experience.from}</Moment> -{" "}
-            {experience.current ? (
-              "Present"
-            ) : (
-              <Moment format="DD/MM/YYYY">{experience.to}</Moment>
-            )}
+            Company: <span>{experience.company}</span>
           </p>
-          <button onClick={this.onDelete.bind(this, experience._id)}>
+          <p>
+            Timespan:{" "}
+            <span>
+              <Moment format="DD/MM/YYYY">{experience.from}</Moment> -{" "}
+              {experience.current ? (
+                "Present"
+              ) : (
+                <Moment format="DD/MM/YYYY">{experience.to}</Moment>
+              )}
+            </span>
+          </p>
+          <button
+            className="deleteExperience"
+            onClick={this.onDelete.bind(this, experience._id)}
+          >
             Delete Experience
           </button>
         </div>
