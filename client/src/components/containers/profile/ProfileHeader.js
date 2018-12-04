@@ -9,10 +9,14 @@ class ProfileHeader extends Component {
     const { profile } = this.props;
 
     return (
-      <div>
+      <div className="profileHeader">
         <h1>{profile.user.name}</h1>
-        <p>{profile.title}</p>
-        <p>Living in {profile.location}</p>
+        <p>
+          Title: <span>{profile.title}</span>
+        </p>
+        <p>
+          Location: <span>{profile.location}</span>
+        </p>
         <div>
           {isEmpty(
             profile.social_media && profile.social_media.facebook

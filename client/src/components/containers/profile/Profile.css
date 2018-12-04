@@ -1,0 +1,15 @@
+.profile {
+    text-align: center;
+}
+
+.profile .goBack {
+    margin: 20px 20px;
+}
+
+.profile .goBack a {
+    color: inherit;
+}
+
+.profile .profileHeader span {
+    font-weight: bold;
+}

@@ -6,6 +6,8 @@ import ProfileExperience from "./ProfileExperience";
 import Loader from "../../loader/Loader";
 import { Link } from "react-router-dom";
 
+import "./Profile.css";
+
 // Redux
 import { connect } from "react-redux";
 import { getProfileByHandle } from "../../../redux/actions/profileActions";
@@ -32,8 +34,8 @@ class Profile extends Component {
       profileData = <Loader />;
     } else {
       profileData = (
-        <div>
-          <div>
+        <div className="profile">
+          <div className="goBack">
             <Link to="/profiles">Back to Profiles</Link>
           </div>
           <div>
