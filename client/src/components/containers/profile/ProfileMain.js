@@ -11,8 +11,8 @@ class ProfileMain extends Component {
     });
 
     return (
-      <div>
-        <div>
+      <div className="profileMain">
+        <div className="bio">
           <h2>Bio</h2>
           <p>
             {isEmpty(profile.bio)
@@ -20,7 +20,7 @@ class ProfileMain extends Component {
               : profile.bio}
           </p>
         </div>
-        <div>
+        <div className="skills">
           <h2>Skills</h2>
           <ul>{skills}</ul>
         </div>

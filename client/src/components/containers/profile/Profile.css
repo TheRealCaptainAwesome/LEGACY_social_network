@@ -10,6 +10,26 @@
     color: inherit;
 }
 
+.profile ul {
+    padding-left: 0;
+}
+
+.profileHeader,
+.profileMain {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.profileHeader::after,
+.profileMain::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    left: 25%;
+    bottom: -20px;
+    border-bottom: 1px solid #444444;
+}
+
 .profile .profileHeader span {
     font-weight: bold;
 }
