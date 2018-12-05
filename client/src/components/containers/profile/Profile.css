@@ -30,6 +30,16 @@
     border-bottom: 1px solid #444444;
 }
 
-.profile .profileHeader span {
+.profile .profileHeader span,
+.profile .profileExperience span {
     font-weight: bold;
+}
+
+.profile .profileExperience .experience {
+    background-color: #1376AA;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    box-shadow: 0px 0px 4px #444444;
+    color: #eeeeee;
 }

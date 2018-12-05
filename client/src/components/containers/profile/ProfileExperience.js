@@ -11,10 +11,15 @@ class ProfileExperience extends Component {
     if (!isEmpty(profile.experience)) {
       experiences = profile.experience.map(experience => {
         return (
-          <div key={experience._id}>
-            <h3>{experience.company}</h3>
-            <p>{experience.title}</p>
+          <div className="experience" key={experience._id}>
             <p>
+              Company: <span>{experience.company}</span>
+            </p>
+            <p>
+              Title: <span>{experience.title}</span>
+            </p>
+            <p>
+              Timespan:
               <span>
                 <Moment format="DD/MM/YYYY">{experience.from}</Moment>
               </span>
@@ -33,11 +38,12 @@ class ProfileExperience extends Component {
     }
 
     return (
-      <div>
+      <div className="profileExperience">
+        <h2>Experience</h2>
         {experiences.length > 0 ? (
           <div>{experiences}</div>
         ) : (
-          <h3>No experience listed.</h3>
+          <p>No experience listed.</p>
         )}
       </div>
     );
