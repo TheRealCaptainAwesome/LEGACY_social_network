@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import Loader from "../../loader/Loader";
 import ProfileItem from "./ProfileItem";
 
+import "./Profiles.css";
+
 // Redux
 import { connect } from "react-redux";
 import { getProfiles } from "../../../redux/actions/profileActions";

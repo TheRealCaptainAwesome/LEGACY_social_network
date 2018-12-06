@@ -7,20 +7,22 @@ class ProfileItem extends Component {
     const { profile } = this.props;
     return (
       <div className="card">
-        <div>
-          <h3>{profile.user.name}</h3>
+        <div className="cardPersonal">
+          <p>{profile.user.name}</p>
           <p>{profile.title}</p>
           <p>{profile.location}</p>
         </div>
-        <div>
-          <h3>Skills</h3>
+        <div className="cardSkills">
+          <p>Skills</p>
           <ul>
             {profile.skills.slice(0, 4).map((skill, index) => {
               return <li key={index}>{skill}</li>;
             })}
           </ul>
         </div>
-        <Link to={`/profile/${profile.handle}`}>View Profile</Link>
+        <Link className="viewProfile" to={`/profile/${profile.handle}`}>
+          View Profile
+        </Link>
       </div>
     );
   }

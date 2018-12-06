@@ -1,0 +1,41 @@
+.card {
+    background-color: #1376AA;
+    width: 80%;
+    margin: 20px auto;
+    padding: 10px;
+    box-shadow: 0px 0px 4px #444444;
+    color: #eeeeee;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cardPersonal {
+    text-align: center;
+    width: 50%;
+}
+
+.cardSkills {
+    width: 50%;
+}
+
+.cardSkills p,
+.cardPersonal p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 10px;
+}
+
+.cardSkills ul {
+    padding-left: 0;
+    text-align: center;
+}
+
+.viewProfile {
+    display: block;
+    padding: 5px 10px;
+    margin: 0 auto 5px;
+    text-decoration: none;
+    color: #eeeeee;
+    background-color: #004b7b;
+}
