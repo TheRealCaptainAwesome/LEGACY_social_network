@@ -74,11 +74,11 @@ class Navbar extends Component {
       // 2. onClick function sets toggle state to false
       <nav className="loggedIn">
         <ul>
-          <Link to="/dashboard">
+          <Link onClick={this.onNavLinkClick} to="/dashboard">
             <li>Dashboard</li>
           </Link>
 
-          <Link to="/feed">
+          <Link onClick={this.onNavLinkClick} to="/feed">
             <li>Feed</li>
           </Link>
           <a href="" onClick={this.onLogout}>
