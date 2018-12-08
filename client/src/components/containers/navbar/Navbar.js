@@ -68,10 +68,6 @@ class Navbar extends Component {
     );
 
     const loggedInLinks = (
-      // TODO:
-      // LoggedIn links needs to be clsoed if clicked
-      // 1. onClick to links
-      // 2. onClick function sets toggle state to false
       <nav className="loggedIn">
         <ul>
           <Link onClick={this.onNavLinkClick} to="/dashboard">
