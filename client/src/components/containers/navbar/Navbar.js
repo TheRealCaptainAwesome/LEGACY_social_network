@@ -29,6 +29,12 @@ class Navbar extends Component {
     });
   };
 
+  onNavLinkClick = () => {
+    this.setState({
+      toggle: false
+    });
+  };
+
   render() {
     const { isAuthenticated } = this.props.auth;
 
