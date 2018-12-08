@@ -13,7 +13,6 @@ class ProfileItem extends Component {
           <p>{profile.location}</p>
         </div>
         <div className="cardSkills">
-          <p>Skills</p>
           <ul>
             {profile.skills.slice(0, 4).map((skill, index) => {
               return <li key={index}>{skill}</li>;
