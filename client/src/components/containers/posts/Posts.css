@@ -1,0 +1,13 @@
+.createPost form textarea {
+    display: block;
+    margin: 20px auto;
+    border: solid 1px #444444;
+    height: 100px;
+    width: 250px;
+    background-color: #eeeeee;
+}
+
+.createPost form input {
+    display: block;
+    margin: 0 auto;
+}

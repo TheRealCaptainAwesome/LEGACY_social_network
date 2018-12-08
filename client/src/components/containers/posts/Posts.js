@@ -4,6 +4,8 @@ import PostForm from "./PostForm";
 import PostFeed from "./PostFeed";
 import Loader from "../../loader/Loader";
 
+import "./Posts.css";
+
 // Redux
 import { connect } from "react-redux";
 import { getPosts } from "../../../redux/actions/postActions";
