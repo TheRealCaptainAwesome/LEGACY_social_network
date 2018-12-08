@@ -44,7 +44,7 @@ class PostItem extends Component {
             className={this.addLikedClass(post.likes)}
             onClick={this.onLike.bind(this, post._id)}
           >
-            Likes: {post.likes.length}
+            Likes({post.likes.length})
           </span>
           <Link to={`/post/${post._id}`}>Comments</Link>
         </div>
