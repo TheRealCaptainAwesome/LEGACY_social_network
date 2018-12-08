@@ -10,7 +10,7 @@ class PostFeed extends Component {
       return <PostItem key={index} post={post} />;
     });
 
-    return <div>{feed}</div>;
+    return <div className="feed">{feed}</div>;
   }
 }
 

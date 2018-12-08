@@ -29,16 +29,17 @@ class PostItem extends Component {
     }
   };
 
+  // Like design needs improving
   render() {
     const { post, auth } = this.props;
 
     return (
-      <div>
-        <div>
+      <div className="post">
+        <div className="text">
           <p>{post.text}</p>
-          <span>{post.author}</span>
+          <span>Author: {post.author}</span>
         </div>
-        <div>
+        <div className="interactivity">
           <span
             className={this.addLikedClass(post.likes)}
             onClick={this.onLike.bind(this, post._id)}
