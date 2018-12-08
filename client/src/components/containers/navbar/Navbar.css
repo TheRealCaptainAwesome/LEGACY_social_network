@@ -13,4 +13,5 @@ header h1 {
     background-color: #1376aa;
     position: static;
     z-index: 30;
+    box-shadow: 0px 15px 10px -15px #004b7b;
 }
