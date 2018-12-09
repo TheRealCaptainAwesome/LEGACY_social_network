@@ -29,7 +29,6 @@ class PostItem extends Component {
     }
   };
 
-  // Like design needs improving
   render() {
     const { post, auth } = this.props;
 
@@ -46,7 +45,9 @@ class PostItem extends Component {
           >
             Likes({post.likes.length})
           </span>
-          <Link to={`/post/${post._id}`}>Comments</Link>
+          <Link to={`/post/${post._id}`}>
+            Comments ({post.comments.length})
+          </Link>
         </div>
         {post.user === auth.user.id ? (
           <button onClick={this.onDeletePost.bind(this, post._id)}>

@@ -37,22 +37,33 @@
 .feed .post .interactivity {
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 90%;
     margin: 10px auto;
 }
 
-.feed .post .interactivity span {
+.feed .post .interactivity span,
+.feed .post .interactivity a {
     display: block;
-    width: 80px;
+    width: 110px;
     background-color: #1376AA;
     border: none;
     color: #eeeeee;
     padding: 5px;
     text-align: center;
+    text-decoration: none;
 }
 
 .feed .post .interactivity span.liked,
 .feed .post .interactivity span:hover {
     background-color: #004b7b;
+}
+
+.feed .post button {
+    background-color: #D12A0B;
+    color: #eeeeee;
+    border: none;
+    padding: 5px;
+    display: block;
+    margin: 15px auto 0;
 }
 
