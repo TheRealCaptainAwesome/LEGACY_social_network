@@ -21,10 +21,14 @@ class Post extends Component {
       content = <Loader />;
     } else {
       content = (
-        <div>
+        <div className="post">
           <PostItem post={post} />
           <CreateComment postId={post._id} />
-          <CommentFeed postId={post._id} comments={post.comments} />
+          <CommentFeed
+            className="commentFeed"
+            postId={post._id}
+            comments={post.comments}
+          />
         </div>
       );
     }
