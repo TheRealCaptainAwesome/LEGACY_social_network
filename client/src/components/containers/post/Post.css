@@ -1,0 +1,22 @@
+.postContainer .goBack {
+    color: #444444;
+    display: block;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.postContainer .post {
+    width: 80%;
+    margin: 0 auto 25px;
+}
+
+.postContainer .commentForm textarea {
+    display: block;
+    margin: 10px auto;
+    border: 1px solid #444444;
+}
+
+.postContainer .commentForm input {
+    display: block;
+    margin: 5px auto;
+}

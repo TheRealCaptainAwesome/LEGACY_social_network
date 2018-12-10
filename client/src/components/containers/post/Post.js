@@ -5,6 +5,8 @@ import PostItem from "./PostItem";
 import CreateComment from "./CreateComment";
 import CommentFeed from "./CommentFeed";
 
+import "./Post.css";
+
 // Redux
 import { connect } from "react-redux";
 import { getPost } from "../../../redux/actions/postActions";
@@ -21,7 +23,7 @@ class Post extends Component {
       content = <Loader />;
     } else {
       content = (
-        <div className="post">
+        <div className="postContainer">
           <PostItem post={post} />
           <CreateComment postId={post._id} />
           <CommentFeed

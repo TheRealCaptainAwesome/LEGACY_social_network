@@ -6,11 +6,13 @@ class PostItem extends Component {
   render() {
     const { post } = this.props;
     return (
-      <div>
-        <Link to="/feed">Go Back</Link>
+      <div className="post">
+        <Link className="goBack" to="/feed">
+          Go Back
+        </Link>
         <p>{post.text}</p>
         <div>
-          <span>{post.author}</span>
+          <span>Author: {post.author}</span>
         </div>
       </div>
     );

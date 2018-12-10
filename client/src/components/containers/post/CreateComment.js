@@ -32,7 +32,7 @@ class CreateComment extends Component {
 
   render() {
     return (
-      <div>
+      <div className="commentForm">
         <form onSubmit={this.onSubmit}>
           <TextArea
             name="text"
@@ -40,7 +40,7 @@ class CreateComment extends Component {
             value={this.state.text}
             onChange={this.onChange}
           />
-          <input type="submit" />
+          <input type="submit" value="Post Comment" />
         </form>
       </div>
     );
