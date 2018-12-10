@@ -7,15 +7,10 @@ class PostItem extends Component {
     const { post } = this.props;
     return (
       <div>
-        <div>
-          <span>{post.likes !== undefined ? post.likes.length : null}</span>
-        </div>
+        <Link to="/feed">Go Back</Link>
         <p>{post.text}</p>
         <div>
           <span>{post.author}</span>
-        </div>
-        <div>
-          <Link to="/feed">Go Back</Link>
         </div>
       </div>
     );
