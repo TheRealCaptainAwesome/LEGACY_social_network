@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Moment from "react-moment";
 
 // Redux
 import { connect } from "react-redux";
@@ -16,7 +17,8 @@ class CommentItem extends Component {
       <div>
         <div>
           <p>
-            {comment.name} - {comment.date}
+            {comment.name} -{" "}
+            <Moment format="DD/MM/YYYY HH:mm">{comment.date}</Moment>
           </p>
         </div>
         <div>
