@@ -25,13 +25,12 @@ class CommentItem extends Component {
           </p>
         </div>
         {comment.user === auth.user.id ? (
-          <div>
-            <button
-              onClick={this.onDeleteComment.bind(this, postId, comment._id)}
-            >
-              Delete Comment
-            </button>
-          </div>
+          <button
+            className="deleteComment"
+            onClick={this.onDeleteComment.bind(this, postId, comment._id)}
+          >
+            Delete Comment
+          </button>
         ) : null}
       </div>
     );

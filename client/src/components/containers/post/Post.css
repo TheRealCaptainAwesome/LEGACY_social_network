@@ -22,3 +22,17 @@
     display: block;
     margin: 5px auto;
 }
+
+.postContainer .comment {
+    width: 80%;
+    margin: 25px auto;
+    padding: 10px 20px 20px;
+    background-color: #eeeeee;
+}
+
+.postContainer .comment .deleteComment {
+    background-color: #D12A0B;
+    color: #eeeeee;
+    border: none;
+    padding: 5px 10px 8px;
+}
