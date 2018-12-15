@@ -14,15 +14,15 @@ class CommentItem extends Component {
   render() {
     const { comment, postId, auth } = this.props;
     return (
-      <div>
-        <div>
+      <div className="comment">
+        <div className="commentText">
+          <p>{comment.text}</p>
+        </div>
+        <div className="author">
           <p>
             {comment.name} -{" "}
             <Moment format="DD/MM/YYYY HH:mm">{comment.date}</Moment>
           </p>
-        </div>
-        <div>
-          <p>{comment.text}</p>
         </div>
         {comment.user === auth.user.id ? (
           <div>
