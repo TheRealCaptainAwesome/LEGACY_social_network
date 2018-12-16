@@ -21,9 +21,7 @@ const AddValue = ({
         value={value}
         id={id}
       />
-      <button type="button" onClick={addToList}>
-        Add {id}
-      </button>
+      <input type="submit" onClick={addToList} value={`Add ${id}`} />{" "}
       <ul>
         {itemArray.length > 0 ? (
           itemArray.map((item, i) => <li key={i}>{item}</li>)
