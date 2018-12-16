@@ -1,0 +1,21 @@
+.addExperience h2 {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.addExperience #current {
+    margin-right: 5px;
+}
+
+.addExperience input[type="date"] {
+    width: 180px;
+}
+
+.addExperience .currentJob {
+    display: inline;
+}
+
+.addExperience input[type="submit"] {
+    display: block;
+    margin: 0 auto 25px;
+}

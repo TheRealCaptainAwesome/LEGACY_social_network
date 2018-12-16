@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 
 import Field from "../../formComponents/fields/Field";
 
+import "./AddExperience.css";
+
 // Redux
 import { connect } from "react-redux";
 import { addExperience } from "../../../redux/actions/profileActions";
@@ -45,7 +47,8 @@ class AddExperience extends Component {
 
   render() {
     return (
-      <main>
+      <div className="addExperience">
+        <h2>Add New Experience</h2>
         <form onSubmit={this.onSubmit}>
           <Field
             name="title"
@@ -76,18 +79,24 @@ class AddExperience extends Component {
             id="to"
             disabled={this.state.disabled ? "disabled" : ""}
           />
-          <input
-            type="checkbox"
-            name="current"
-            id="current"
-            value={this.state.current}
-            checked={this.state.current}
-            onChange={this.onCheckboxClick}
-          />
-          <label htmlFor="current">Is this your current job?</label>
-          <input type="submit" />
+          <div>
+            <input
+              type="checkbox"
+              name="current"
+              id="current"
+              value={this.state.current}
+              checked={this.state.current}
+              onChange={this.onCheckboxClick}
+            />
+            <label className="currentJob" htmlFor="current">
+              Is this your current job?
+            </label>
+          </div>
+          <div>
+            <input type="submit" value="Add Experience" />
+          </div>
         </form>
-      </main>
+      </div>
     );
   }
 }
