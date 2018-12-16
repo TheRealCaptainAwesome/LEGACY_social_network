@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import isEmpty from "../../../redux/utilities/isEmpty";
 
+import "./EditProfile.css";
+
 import Field from "../../formComponents/fields/Field";
 import TextArea from "../../formComponents/fields/TextArea";
 import SocialField from "../../formComponents/socialmedia/SocialField";
@@ -104,8 +106,8 @@ class EditProfile extends Component {
 
   render() {
     return (
-      <main>
-        <h1>Edit Your Profile</h1>
+      <div className="editProfile">
+        <h2>Edit Your Profile</h2>
         <form onSubmit={this.onSubmit}>
           <Field
             name="title"
@@ -138,28 +140,28 @@ class EditProfile extends Component {
           />
           <SocialField
             name="facebook"
-            placeholder="Your Facebook username"
+            placeholder="Facebook Username"
             value={this.state.facebook}
             onChange={this.onChange}
             icon={facebook}
           />
           <SocialField
             name="twitter"
-            placeholder="Your Twitter username"
+            placeholder="Twitter Username"
             value={this.state.twitter}
             onChange={this.onChange}
             icon={twitter}
           />
           <SocialField
             name="instagram"
-            placeholder="Your Instagram username"
+            placeholder="Instagram Username"
             value={this.state.instagram}
             onChange={this.onChange}
             icon={instagram}
           />
-          <input type="submit" />
+          <input type="submit" value="Save" />
         </form>
-      </main>
+      </div>
     );
   }
 }
