@@ -159,7 +159,9 @@ class EditProfile extends Component {
             onChange={this.onChange}
             icon={instagram}
           />
-          <input type="submit" value="Save" />
+          <div>
+            <input className="saveProfile" type="submit" value="Save" />
+          </div>
         </form>
       </div>
     );

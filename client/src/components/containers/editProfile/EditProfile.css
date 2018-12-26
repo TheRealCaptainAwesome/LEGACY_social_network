@@ -6,3 +6,18 @@
 .editProfile #skill {
     margin-bottom: 15px;
 }
+
+.editProfile form div ul {
+    padding-left: 0;
+}
+
+.editProfile form div img {
+    height: 25px;
+    margin-bottom: -5px;
+    margin-right: 3px;
+}
+
+.editProfile form div .saveProfile {
+    margin: 0 auto;
+    display: block;
+}
