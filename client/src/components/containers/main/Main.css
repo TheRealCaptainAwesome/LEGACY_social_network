@@ -34,3 +34,26 @@ form input[type="submit"]:hover {
 form input[type="submit"].logIn {
     width: 100%;
 }
+
+@media screen and (min-width: 768px ) {
+    form {
+        width: 66%;
+        margin: 0 auto;
+    }
+
+    form div {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    form label {
+        font-size: 22px;
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    form input {
+        display: inline;
+    }
+
+}
