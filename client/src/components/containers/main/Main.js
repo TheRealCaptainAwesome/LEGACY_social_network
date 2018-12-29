@@ -6,7 +6,7 @@ import "./Main.css";
 export default class Main extends Component {
   render() {
     return (
-      <main>
+      <main className="login">
         <Login />
       </main>
     );

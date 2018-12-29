@@ -36,23 +36,23 @@ form input[type="submit"].logIn {
 }
 
 @media screen and (min-width: 768px ) {
-    form {
+    .login form {
         width: 66%;
         margin: 0 auto;
     }
 
-    form div {
+    .login form div {
         display: flex;
         justify-content: space-between;
     }
 
-    form label {
+    .login form label {
         font-size: 22px;
         display: inline-block;
         margin-right: 5px;
     }
 
-    form input {
+    .login form input {
         display: inline;
     }
 
