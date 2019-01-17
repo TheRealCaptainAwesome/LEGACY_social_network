@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 // Custom Components
 import Field from "../../formComponents/fields/Field";
+import "./Register.css";
 
 // For use with Redux
 import { withRouter } from "react-router-dom";
@@ -46,7 +47,7 @@ class Register extends Component {
 
   render() {
     return (
-      <main>
+      <main className="signUp">
         <form onSubmit={this.onSubmit}>
           <Field
             type="text"
@@ -72,7 +73,9 @@ class Register extends Component {
             value={this.state.password}
             onChange={this.onInputChange}
           />
-          <input type="submit" />
+          <div>
+            <input className=".signUpButton" type="submit" />
+          </div>
         </form>
       </main>
     );
