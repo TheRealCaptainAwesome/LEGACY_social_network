@@ -74,7 +74,7 @@ class Register extends Component {
             onChange={this.onInputChange}
           />
           <div>
-            <input className=".signUpButton" type="submit" />
+            <input className="signUpButton" value="Sign Up" type="submit" />
           </div>
         </form>
       </main>

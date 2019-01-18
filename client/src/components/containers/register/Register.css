@@ -16,7 +16,10 @@
     }
 
     .signUp form input {
-        display: inline-block;
+        display: inline;
     }
 
+    form input[type="submit"].signUpButton {
+        width: 100%;
+    }
 }
