@@ -21,3 +21,29 @@
     margin: 0 auto;
     display: block;
 }
+
+@media screen and (min-width: 768px ) {
+    .editProfile form {
+        width: 66%;
+        margin: 30px auto;
+    }
+
+    .editProfile form div {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .editProfile form label {
+        font-size: 22px;
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .editProfile form input {
+        display: inline;
+    }
+
+    form input[type="submit"].saveProfile {
+        width: 100%;
+    }
+}
