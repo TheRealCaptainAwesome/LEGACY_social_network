@@ -23,4 +23,4 @@ This is a social network application created just for fun, to get some practice 
 
 This is solely a personal project, so while contributions is always appreciated and welcome if you want to practice using Git, be aware that changes might be made to your contributions.
 
-## Acknowledgements
+
