@@ -6,7 +6,7 @@ This is a social network application created just for fun, to get some practice 
 ## Get Started
 
  * Download the repo
- * Run npm install
+ * Run npm install in both the client and the top folder
  * To run the server: enter nodemon server.js from your terminal
  * To run the client: cd into the client folder and enter npm start from your terminal
 
