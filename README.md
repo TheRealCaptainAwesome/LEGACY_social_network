@@ -2,6 +2,13 @@
 
 This is a social network application created just for fun, to get some practice using the MERN stack on something that could actually be shown to people.
 
+## Status
+
+Functionality is in place but there is need for styling and css-work on the following areas:
+
+* 768px+ viewports
+* 1024px+ viewports
+
 ## Prerequisites
 
 * You need to have Node.js and NPM installed
