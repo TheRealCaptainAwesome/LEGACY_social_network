@@ -6,7 +6,7 @@ const db = require("../config/keys").mongoURI;
 module.exports = {
   connectMongoose: () => {
     mongoose
-      .connect(db)
+      .connect(db, { useNewUrlParser: true })
       .then(() => console.log("db connected."))
       .catch(err => console.log(`Failure: ${err}`));
   },
