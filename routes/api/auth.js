@@ -65,7 +65,12 @@ router.post("/login", (req, res) => {
   const password = req.body.password;
 
   db.connectMongoose();
-  User.findOne({ email }).then(user => {
+  User.findOne({ email }, function(err, user) {
+    console.log(err);
+    console.log(user);
+    if (err) {
+      return res.status(400).json({ err });
+    }
     if (!user) {
       validationError.email = "User not found.";
       return res.status(400).json({ validationError });
