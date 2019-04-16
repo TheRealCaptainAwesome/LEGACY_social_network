@@ -4,10 +4,7 @@ This is a social network application created just for fun, to get some practice 
 
 ## Status
 
-Functionality is in place but there is need for styling and css-work on the following areas:
-
-* 768px+ viewports
-* 1024px+ viewports
+MVP-functionality is in place but there is need for styling and css-work in some areas.
 
 ## Prerequisites
 
