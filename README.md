@@ -4,7 +4,7 @@ This is a social network application created just for fun, to get some practice 
 
 ## Status
 
-MVP-functionality is in place but there is need for styling and css-work in some areas.
+MVP-functionality is in place but there is need for styling and css-work (And some functionality is about to become deprecated) in some areas.
 
 ## Prerequisites
 
